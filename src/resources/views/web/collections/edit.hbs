@@ -1,0 +1,19 @@
+<form method="POST" action="/collection/{{collection._id}}?_method=PUT">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" class="form-control" value="{{collection.name}}" id="name" name="name">
+
+    </div>
+    <div>
+        <label for="description">description</label>
+        <input type="text" class="form-control" value="{{collection.description}}" id="description" name="description">
+
+    </div>
+    <div>
+        <label for="img">img</label>
+        <input type="text" class="form-control" value="{{collection.img}}" id="img" name="img">
+
+    </div>
+   
+    <button type="submit">sua</button>
+</form>
