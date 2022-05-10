@@ -11,15 +11,15 @@ const  {
 
 //local/oder/all
 //GET ALL USERS
-router.get("/all",verifyTokenAndUserAuthorization, oderController.getAllUser);
+router.get("/all",verifyTokenAndUserAuthorization, oderController.getAllOder);
 
 //DELETE USER
-router.delete("/delete/:id", verifyTokenAndUserAuthorization, oderController.deleteUser);
+router.delete("/delete/:id", verifyTokenAndUserAuthorization, oderController.deleteOder);
 
-router.get("/get/:id", verifyTokenAndUserAuthorization, oderController.getUser);
+router.get("/get/:id", verifyTokenAndUserAuthorization, oderController.getOder);
 
 router.put("/edit/:id", verifyTokenAndUserAuthorization, oderController.update);
 
-router.post("/new", verifyTokenAndUserAuthorization, oderController.ne);
+router.post("/new", verifyTokenAndUserAuthorization, oderController.newOder);
 
 module.exports = router;

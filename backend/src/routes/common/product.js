@@ -14,12 +14,12 @@ const  {
 router.get("/all",  productController.getAllProduct);
 
 //DELETE USER
-router.delete("/delete/:id", verifyTokenAndUserAuthorization, productController.deleteProduct);
+router.delete("/delete/:id", verifyTokenAndSeller, productController.deleteProduct);
 
-router.get("/get/:id", verifyTokenAndUserAuthorization, productController.getProduct);
+router.get("/get/:id", productController.getProduct);
 
-router.put("/edit/:id", verifyTokenAndUserAuthorization, productController.update);
+router.put("/edit/:id", verifyTokenAndSeller, productController.update);
 
-router.post("/new", verifyTokenAndUserAuthorization, productController.newProduct);
+router.post("/new", verifyTokenAndSeller, productController.newProduct);
 
 module.exports = router;

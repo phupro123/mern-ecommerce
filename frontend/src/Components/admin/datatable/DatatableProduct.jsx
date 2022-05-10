@@ -1,6 +1,6 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns } from "../../../datatablesource";
+import { userColumns,productColumns } from "../../../datatablesource";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,9 +42,7 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/admin/users/${params.row._id}`}style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
+            
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
@@ -53,7 +51,7 @@ const Datatable = () => {
             </div>
             <Link to={`/admin/users/edit/${params.row._id}`}style={{ textDecoration: "none" }}>
             <div
-              className="updateButton" >Update</div>
+              className="updateButton" >Edit</div>
             </Link>
           </div>
         );
@@ -70,8 +68,8 @@ const Datatable = () => {
       </div>   
         <DataGrid getRowId={(row) => row._id}
         className="datagrid"
-        rows={userList}
-        columns={userColumns.concat(actionColumn)}
+        rows=''
+        columns={productColumns.concat(actionColumn)}
         pageSize={10}
         rowsPerPageOptions={[10]}
         checkboxSelection

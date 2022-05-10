@@ -41,7 +41,7 @@ const verifyToken = (req, res, next) => {
    
   const verifyTokenAndSeller = (req, res, next) => {
     verifyToken(req, res, () => {
-      if (req.user.id === req.params.id && req.user.role === '2') {
+      if (req.user.id === req.params.id && req.user.role === '2' || req.user.role=='1') {
         next();
       } else {
         return res.status(403).json("You're not allowed to do that!");
