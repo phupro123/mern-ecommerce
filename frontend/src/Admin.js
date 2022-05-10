@@ -39,7 +39,7 @@ const Admin = () => {
                   element={<NewProduct   title="Add New Product" action='edit'/>}
                 />
                 <Route
-                  path="update/:id"
+                  path="edit/:productid"
                   element={<NewProduct  title="Update Product" action='edit' />}
                 />
               </Route>

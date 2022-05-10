@@ -4,30 +4,33 @@ import Navbar from "../../../Components/admin/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams,  } from "react-router-dom";
 import { editUser, get1 } from "../../../redux/apiRequest";
+import { get1Product } from "../../../redux/apiProduct";
 
 const New = ({  title,action }) => {
   const dispatch= useDispatch();
   const navigate= useNavigate();
 
   const user = useSelector((state) => state.auth.login?.currentUser)
-  const selectedUser = useSelector((state) => state.user.users?.allUsers)
+
+  const selectedUser = useSelector((state) => state.product.products?.allProduct)
   const [file, setFile] = useState(selectedUser.image);
 
-  const [username,setUsername]=useState(selectedUser.username);
-  const [password,setPassword] = useState(selectedUser.password);
-  const [email,setEmail]= useState(selectedUser.email);
-  const [phone,setPhone]= useState(selectedUser.phone);
-  const [fullname,setFullname] = useState(selectedUser.fullname);
-  const [role,setRole]=useState(selectedUser.role);  
-  const {id}= useParams();
+  // const [username,setUsername]=useState(selectedUser.username);
+  // const [password,setPassword] = useState(selectedUser.password);
+  // const [email,setEmail]= useState(selectedUser.email);
+  // const [phone,setPhone]= useState(selectedUser.phone);
+  // const [fullname,setFullname] = useState(selectedUser.fullname);
+  // const [role,setRole]=useState(selectedUser.role);  
+  
+  const {productid}= useParams()
  
   //Load trang
   useEffect(()=>{
   
     if(user?.accessToken){
-      get1(user?.accessToken,dispatch,id)
+      get1Product(user?.accessToken,dispatch,productid)
      // getAllUsers(user?.accessToken,dispatch)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,16 +39,16 @@ const New = ({  title,action }) => {
   const handleLogin = (e) =>{
     e.preventDefault()
     
-    const newUser = {
-      username: username,
-      password: password,
-      email,
-      phone,
-      fullname,
-      role,
-      image: file,
-    }
-    editUser(newUser,dispatch,navigate,id,user?.accessToken)
+    // const newUser = {
+    //   username: username,
+    //   password: password,
+    //   email,
+    //   phone,
+    //   fullname,
+    //   role,
+    //   image: file,
+    // }
+    // editUser(newUser,dispatch,navigate,id,user?.accessToken)
   }
   return (
     <div className="new">
@@ -82,21 +85,21 @@ const New = ({  title,action }) => {
 
                 <div className="formInput" >
                   <label>Username</label>
-                  <input type='text' placeholder={selectedUser.username} onChange={(e)=>setUsername(e.target.value)} />
+                  <input type='text' placeholder={selectedUser.name}  />
                 </div>
                 <div className="formInput" >
                   <label>Full Name</label>
-                  <input type='text' placeholder={selectedUser.fullname} onChange={(e)=>setFullname(e.target.value)}/>
+                  <input type='text' placeholder={selectedUser.fullname} />
                 </div>
            
                 <div className="formInput" >
                   <label>Password</label>
-                  <input type='password' onChange={(e)=>setPassword(e.target.value)} />
+                  <input type='password' />
                 </div>
            
                 <div className="formInput" >
                   <label>Email</label>
-                  <input type='email' placeholder={selectedUser.email} onChange={(e)=>setEmail(e.target.value)} />
+                  <input type='email' placeholder={selectedUser.email}  />
                 </div>
            
                 <div className="formInput" >
@@ -106,10 +109,10 @@ const New = ({  title,action }) => {
            
                 <div className="formInput" >
                   <label>Phone</label>
-                  <input type='text' placeholder={selectedUser.phone}  onChange={(e)=>setPhone(e.target.value)}/>
+                  <input type='text' placeholder={selectedUser.phone}  />
                 </div>
                 
-                <select className="table-group-action-input form-control" onChange={(e)=>setRole(e.target.value)} placeholder={selectedUser.role} > 
+                <select className="table-group-action-input form-control"  > 
                 <option value="3" >Customer</option>
                 <option value="2" >Seller</option>
               </select>

@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { createFalse, createStart, createSuccess,deleteProductFalse, deleteProductStart, deleteProductSuccess,  editProductFalse,  editProductStart,  editProductSuccess,  getProductsFalse, getProductsStart, getProductsSuccess } from "./productSlice";
+import { createFalse, createStart, createSuccess,deleteProductFalse, deleteProductStart, deleteProductSuccess,  editProductFalse,  editProductStart,  editProductSuccess,  getProductFalse, getProductStart, getProductSuccess } from "./productSlice";
 
 
 
@@ -33,35 +33,35 @@ export const editProduct = async(product,dispatch,navigate,id,accessToken) =>{
    }
 }
 
-export const getAllProducts = async(accessToken,dispatch) =>{
-    dispatch(getProductsStart())
+export const getAllProduct = async(accessToken,dispatch) =>{
+    dispatch(getProductStart())
    try{
        
        const res= await axios.get("/product/all",{
            headers: {token: `Bearer ${accessToken}`},
        })
-       dispatch(getProductsSuccess(res.data))
+       dispatch(getProductSuccess(res.data))
     
        
            
    }catch(err){
-       dispatch(getProductsFalse())
+       dispatch(getProductFalse())
    }
 }
 
 export const get1Product = async(accessToken,dispatch,id) =>{
-    dispatch(getProductsStart())
+    dispatch(getProductStart())
    try{
        
        const res= await axios.get("/product/get/"+id,{
            headers: {token: `Bearer ${accessToken}`},
        })
-       dispatch(getProductsSuccess(res.data))
+       dispatch(getProductSuccess(res.data))
     
        
            
    }catch(err){
-       dispatch(getProductsFalse())
+       dispatch(getProductFalse())
    }
 }
 
