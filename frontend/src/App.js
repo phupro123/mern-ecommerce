@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Customer from "./Customer";
 import Admin from "./Admin";
 
+
 function App() {
   return (
     <Router>

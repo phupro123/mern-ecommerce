@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {  useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 
 import { useState } from "react";
-import { loginUser } from "../../redux/apiRequest";
+import { direct, loginUser } from "../../redux/apiRequest";
 
 
 
@@ -69,7 +69,7 @@ const Login = () => {
     const [password,setPassword] = useState("");
     const dispatch= useDispatch();
     const navigate= useNavigate();
-    
+ 
     const handleLogin = (e) =>{
       e.preventDefault()
 
@@ -78,7 +78,11 @@ const Login = () => {
         password: password,
       }
       loginUser(newUser,dispatch,navigate)
+
+     
+    
     }
+  
     return ( 
         <Container>
         <Wrapper>

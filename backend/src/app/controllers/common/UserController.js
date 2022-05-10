@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 class UserController {
 
-    // [GET] /user/:slug
+    // [GET] /user/all
     async getAllUser(req,res,next){
        
         User.find({})
@@ -20,6 +20,7 @@ class UserController {
         // res.send('detail'+req.params.slug)    
     }
 
+    // [delete] /user/delete/:id
     async deleteUser(req,res){
         try {
             await User.findByIdAndDelete(req.params.id);
@@ -28,24 +29,23 @@ class UserController {
            return res.status(500).json(err);
           }
         }
-    //  [POSt] /login/register
-    async register  (req, res, next){
-        const formData= req.body
+     // [GET] /user/get/:id
+    async getUser(req,res,next){
+        await User.findById(req.params.id)
+        .then(user =>{
+            res.status(200).json(user) 
+        })
+        .catch(next)
         
-        const salt = await bcrypt.genSalt(10);
-        formData.password = await bcrypt.hash(formData.password, salt);
-
-        const user = new User(formData)
-
-        user.save()
-            .then(() => res.status(200).json(user))
-            .catch(error => {
-                res.status(200).json(error)
-            })
         
     }
-
-
+     //[PUT]  /user/edit/:id
+     async update (req,res,next){
+        await  User.updateOne({_id: req.params.id},req.body)
+            .then(() => res.status(200).json('Updated Success'))
+            .catch(next)
+        
+    }
 }
 
 module.exports = new  UserController();

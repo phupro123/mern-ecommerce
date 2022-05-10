@@ -1,26 +1,36 @@
 import axios from "axios"
 import {loginFalse, loginStart, loginSuccess, registerFalse, registerStart, registerSuccess, logOutStart,logOutSuccess,logOutFailed} from './authSlice'
-import { deleteUserFalse, deleteUserStart, deleteUserSuccess, getUsersFalse, getUsersStart, getUsersSuccess } from "./userSlice";
+import { deleteUserFalse, deleteUserStart, deleteUserSuccess,  editUserFalse,  editUserStart,  editUserSuccess,  getUsersFalse, getUsersStart, getUsersSuccess } from "./userSlice";
 
 
 export const loginUser = async(user,dispatch,navigate) =>{
      dispatch(loginStart())
     try{
-       // const i =3;
+       
         const res= await axios.post("/login",user)
         dispatch(loginSuccess(res.data))
-       // if(i===2){
+        const role =res.data.role
+        if(role==='3'){
             navigate('/')
-       // }
-       // else if(i===3)
-       // {
-           // navigate('/admin')
-        //}
+        }
+        else if(role==='2')
+       {
+           navigate('/seller')
+        }
+        else if(role ==='1')
+        {
+            navigate('/admin')
+        }
+        
+       
             
     }catch(err){
         dispatch(loginFalse())
     }
 }
+
+
+
 
 export const registerUser = async(user,dispatch,navigate) =>{
     dispatch(registerStart())
@@ -33,6 +43,21 @@ export const registerUser = async(user,dispatch,navigate) =>{
            
    }catch(err){
        dispatch(registerFalse())
+   }
+}
+
+export const editUser = async(user,dispatch,navigate,id,accessToken) =>{
+    dispatch(editUserStart())
+   try{
+       
+       const res= await axios.put("/user/edit/"+id,user,{
+        headers: {token: `Bearer ${accessToken}`},})
+       dispatch(editUserSuccess(res.data))
+        //navigate('/login')
+       
+           
+   }catch(err){
+       dispatch(editUserFalse(err.response.data))
    }
 }
 
@@ -52,7 +77,25 @@ export const getAllUsers = async(accessToken,dispatch) =>{
    }
 }
 
-export const deleteUser = async(accessToken,dispatch,id, axiosJWT) =>{
+export const get1 = async(accessToken,dispatch,id) =>{
+    dispatch(getUsersStart())
+   try{
+       
+       const res= await axios.get("/user/get/"+id,{
+           headers: {token: `Bearer ${accessToken}`},
+       })
+       dispatch(getUsersSuccess(res.data))
+    
+       
+           
+   }catch(err){
+       dispatch(getUsersFalse())
+   }
+}
+
+
+
+export const deleteUser = async(accessToken,dispatch,id) =>{
     dispatch(deleteUserStart())
    try{
        
@@ -64,7 +107,7 @@ export const deleteUser = async(accessToken,dispatch,id, axiosJWT) =>{
        
            
    }catch(err){
-       dispatch(deleteUserFalse(err.response.data))
+        dispatch(deleteUserFalse(err.response.data))
    }
 
 }

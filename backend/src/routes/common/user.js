@@ -16,4 +16,8 @@ router.get("/all", verifyToken, userController.getAllUser);
 //DELETE USER
 router.delete("/delete/:id", verifyTokenAndUserAuthorization, userController.deleteUser);
 
+router.get("/get/:id", verifyTokenAndUserAuthorization, userController.getUser);
+
+router.put("/edit/:id", verifyTokenAndUserAuthorization, userController.update);
+
 module.exports = router;

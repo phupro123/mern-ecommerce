@@ -91,7 +91,7 @@ const Register = () => {
           <Input placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
           <Input placeholder="Phone" onChange={(e)=>setPhone(e.target.value)}/>
           <Input placeholder="Password" type='password' onChange={(e)=>setPassword(e.target.value)}/>
-          <Input placeholder="Confirm Password" />
+          <Input placeholder="Confirm Password" type='password'/>
 
           <select name='role_id' className="table-group-action-input form-control" onChange={(e)=>setRole(e.target.value)}> 
             <option value="3" >Customer</option>
