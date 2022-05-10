@@ -83,6 +83,131 @@ const a = (role)=>{
   else 
     return 'Admin'
 }
+
+export const productColumns = [
+  { field: "_id", headerName: "ID", width: 50 ,
+  renderCell: (params) => {
+    return (
+      <div className="cellWithImg">
+       
+        {params.row._id}
+      </div>
+    );
+  },
+  },
+  {
+    field: "product",
+    headerName: "Product",
+    width: 215  ,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          <img className="cellImg" src={params.row.image} alt="avatar" />
+          {params.row.name}
+        </div>
+      );
+    },
+  },
+  {
+    field: "price",
+    headerName: "Price",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+         
+          {params.row.price}
+        </div>
+      );
+    },
+  },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 150,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+         
+          {params.row.email}
+        </div>
+      );
+    },
+  },
+
+  {
+    field: "category",
+    headerName: "Category",
+    width: 140,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+         
+          {params.row.category_id}
+        </div>
+      );
+    },
+  },
+  {
+    field: "brand",
+    headerName: "Brand",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.role}`}>
+          {params.row.brand_id}
+        </div>
+      );
+    },
+  },
+  {
+    field: "amount",
+    headerName: "Amount",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.amout}
+        </div>
+      );
+    },
+  },
+
+  {
+    field: "status",
+    headerName: "Status",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.status}
+        </div>
+      );
+    },
+  },
+
+  {
+    field: "seller_id",
+    headerName: "Seller",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.seller_id}
+        </div>
+      );
+    },
+  },
+];
+const b = (role)=>{
+  if(role ==='3')
+  return 'Customer'
+  else if(role==='2')
+  return 'Seller'
+  else 
+    return 'Admin'
+}
+
 //temporary data
 export const userRows = [
   {

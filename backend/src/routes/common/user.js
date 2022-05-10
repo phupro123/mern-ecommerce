@@ -11,7 +11,7 @@ const  {
 
 //local/user/all
 //GET ALL USERS
-router.get("/all", verifyToken, userController.getAllUser);
+router.get("/all", verifyTokenAndUserAuthorization, userController.getAllUser);
 
 //DELETE USER
 router.delete("/delete/:id", verifyTokenAndUserAuthorization, userController.deleteUser);

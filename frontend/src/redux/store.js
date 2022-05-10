@@ -3,6 +3,8 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authSlice";
 import userReducer from "./userSlice";
+import productReducer from "./productSlice"
+import oderReducer from "./oderSlice";
 import {
   persistStore,
   persistReducer,
@@ -20,7 +22,12 @@ const persistConfig = {
   version: 1,
   storage,
 };
-const appReducer = combineReducers({ auth: authReducer, user: userReducer });
+const appReducer = combineReducers({
+   auth: authReducer,
+    user: userReducer,
+    product:productReducer,
+    oder: oderReducer,
+});
 const rootReducer = (state, action) => {
   if (action.type === "auth/logOutSuccess") {
       // for all keys defined in your persistConfig(s)
