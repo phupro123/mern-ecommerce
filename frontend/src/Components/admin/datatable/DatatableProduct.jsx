@@ -5,21 +5,25 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { deleteUser, getAllUsers } from "../../../redux/apiRequest";
+import { deleteUser, } from "../../../redux/apiRequest";
+import { getAllProduct } from "../../../redux/apiProduct";
 const Datatable = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // lay ra User
   const user = useSelector((state) => state.auth.login?.currentUser)
  
-  const userList = useSelector((state)=> state.user.users?.allUsers)
-  const [data, setData] = useState(userList);
+  const productList = useSelector((state)=> state.product.products?.allProduct)
+  const [data, setData] = useState(productList);
+
   useEffect(()=>{
     if(user.role !=='1'){
       navigate('/')
     }
+
     if(user?.accessToken){
-      getAllUsers(user?.accessToken,dispatch)
+      getAllProduct(user?.accessToken,dispatch)
     }
    
 
@@ -42,17 +46,17 @@ const Datatable = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            
+            <Link to={`/admin/products/edit/${params.row._id}`}>
+            <div
+              className="updateButton" >Edit</div>
+            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
             >
               Delete
             </div>
-            <Link to={`/admin/users/edit/${params.row._id}`}style={{ textDecoration: "none" }}>
-            <div
-              className="updateButton" >Edit</div>
-            </Link>
+            
           </div>
         );
       },
@@ -61,17 +65,17 @@ const Datatable = () => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
+        Add New Product
         <Link to="/admin/products/new" className="link">
           Add New
         </Link>
       </div>   
         <DataGrid getRowId={(row) => row._id}
         className="datagrid"
-        rows=''
+        rows={productList}
         columns={productColumns.concat(actionColumn)}
-        pageSize={10}
-        rowsPerPageOptions={[10]}
+        pageSize={9}
+        rowsPerPageOptions={[9]}
         checkboxSelection
           />
     </div>
