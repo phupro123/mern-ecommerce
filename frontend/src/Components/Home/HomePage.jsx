@@ -1,7 +1,7 @@
 import "./home.css";
 import NavBar from "../NavBar/NavBar";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { deleteUser, getAllUsers } from "../../redux/apiRequest";
 
@@ -9,7 +9,7 @@ import { deleteUser, getAllUsers } from "../../redux/apiRequest";
 const HomePage = () => {
   // DUMMY DATA
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
 
   const user = useSelector((state) => state.auth.login?.currentUser)
  
@@ -25,13 +25,13 @@ const HomePage = () => {
 
   //Load trang
   useEffect(()=>{
-    if(!user){
-      navigate('/login')
-    }
+    // if(!user){
+    //   navigate('/login')
+    // }
     if(user?.accessToken){
       getAllUsers(user?.accessToken,dispatch)
     }
-  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]) 
 
   return (

@@ -20,7 +20,17 @@ const persistConfig = {
   version: 1,
   storage,
 };
-const rootReducer = combineReducers({ auth: authReducer, user: userReducer });
+const appReducer = combineReducers({ auth: authReducer, user: userReducer });
+const rootReducer = (state, action) => {
+  if (action.type === "auth/logOutSuccess") {
+      // for all keys defined in your persistConfig(s)
+      //storage.removeItem('persist:root')
+      // storage.removeItem('persist:otherKey')
+
+      return appReducer(undefined, action);
+  }
+  return appReducer(state, action);
+}
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

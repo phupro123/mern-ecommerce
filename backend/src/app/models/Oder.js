@@ -4,16 +4,19 @@ const slug = require('mongoose-slug-generator');
 mongoose.plugin(slug);
 
 const Oder = new Schema({
-    customer: { type: String, maxlength : 255  },
-    seller: { type: String, },
+    _id: {type: Number},
+    customer_id: { type: String, maxlength : 255  },
     buy_date: { type: Date },
+    seller_id: { type: String, },
+  
     phone: { type: String,  },
     adress: { type: String, },
     receiver: {type:String},
     pay_id: { type: String, },
     status: {type:String},
-},{
+},{ _id : false,
     timestamps: true
 });
 
+Oder.plugin(AutoIncrement);
 module.exports = mongoose.model('Oder',Oder);

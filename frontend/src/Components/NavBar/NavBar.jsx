@@ -25,7 +25,7 @@ const NavBar = () => {
       <Link to="/login" className="navbar-login"> Login </Link>
       <Link to="/register" className="navbar-register"> Register</Link>
       </>
-)}
+      )}
     </nav>
   );
 };

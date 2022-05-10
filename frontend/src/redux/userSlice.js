@@ -39,6 +39,19 @@ import {createSlice} from "@reduxjs/toolkit"
         },
      
 
+        editUserStart:(state) =>{
+            state.users.isFetching= true
+        },
+        editUserSuccess: (state,action) =>{
+            state.users.isFetching=false;
+            state.msg=action.payload;
+        },
+        editUserFalse: (state,action) =>{
+            state.users.isFetching=false
+            state.users.error=true
+            state.msg = action.payload
+        },
+
     },
 })
 
@@ -49,7 +62,9 @@ export const {
     deleteUserStart,
     deleteUserSuccess,
     deleteUserFalse,
-    
+    editUserStart,
+    editUserSuccess,
+    editUserFalse,
 } = userSlice.actions
 
 export default userSlice.reducer
