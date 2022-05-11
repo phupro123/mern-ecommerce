@@ -1,102 +1,124 @@
 import styled from "styled-components";
-import {  useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {} from "react-bootstrap";
 
 import { useState } from "react";
 import { direct, loginUser } from "../../redux/apiRequest";
-
-
-
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
     ),
-    url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+    url("https://swall.teahub.io/photos/small/16-160847_yamaha-yzf-r1-2020-bike-4k-wallpaper-yzf.jpg");
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: scaleX(-1);
+  position: absolute;
 `;
 
 const Wrapper = styled.div`
   width: 25%;
-  padding: 20px;
-  background-color: white;
- 
+  transform: scaleX(-1);
+  padding: 40px;
+  background-color: rgba(216, 234, 243, 0.8);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  position: relative;
+  top: 180px;
+  right: -150px;
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 300;
+  color: #3a7bd5;
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
+  text-align: center;
 `;
 
 const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
+  width: 100%;
   margin: 10px 0;
   padding: 10px;
+  border-radius: 16px;
+  border: 1px solid #3a7bd5;
+`;
+
+const ContainerButton = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0;
 `;
 
 const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
   cursor: pointer;
-  margin-bottom: 10px;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    #00d2ff 0,
+    #1fa5ea 51%,
+    #3a7bd5 100%
+  );
+  border: 1px solid transparent;
+  text-transform: uppercase;
 `;
 const Url = styled.a`
   margin: 5px 0px;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: underline;
+  display: block;
   cursor: pointer;
+  text-decoration: none;
 `;
 
-
 const Login = () => {
-    const [username,setUsername]= useState("");
-    const [password,setPassword] = useState("");
-    const dispatch= useDispatch();
-    const navigate= useNavigate();
- 
-    const handleLogin = (e) =>{
-      e.preventDefault()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-      const newUser = {
-        username: username,
-        password: password,
-      }
-      loginUser(newUser,dispatch,navigate)
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-     
-    
-    }
-  
-    return ( 
-        <Container>
-        <Wrapper>
-          <Title>SIGN IN</Title>
-          <Form onSubmit={handleLogin}>
-            <Input placeholder="username"  onChange={(e)=>setUsername(e.target.value)}/>
-            <Input placeholder="password"  onChange={(e)=>setPassword(e.target.value)}  type="password" />
-            <Button type="submit" >LOGIN</Button>
-            <Url>DO NOT YOU REMEMBER THE PASSWORD?</Url>
-            <Url href="/register">CREATE A NEW ACCOUNT</Url>
-          </Form>
-        </Wrapper>
-      </Container>
-     );
-}
+    const newUser = {
+      username: username,
+      password: password,
+    };
+    loginUser(newUser, dispatch, navigate);
+  };
+
+  return (
+    <Container>
+      <Wrapper>
+        <Title>SIGN IN</Title>
+        <Form onSubmit={handleLogin}>
+          <Input
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+          />
+          <ContainerButton>
+            <Button type="submit">LOGIN</Button>
+            <Button type="submit">REGISTER</Button>
+          </ContainerButton>
+          <Url>Do you not you remember the password</Url>
+        </Form>
+      </Wrapper>
+    </Container>
+  );
+};
 
 export default Login;

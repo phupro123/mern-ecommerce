@@ -8,9 +8,9 @@ export const createProduct = async(product,dispatch,navigate) =>{
     dispatch(createStart())
    try{
        
-       const res= await axios.post("/login/create",product)
+       const res= await axios.post("/product/new",product)
        dispatch(createSuccess(res.data))
-        navigate('/login')
+        
        
            
    }catch(err){
@@ -93,11 +93,24 @@ export const getCategory4 = async(dispatch) =>{
        dispatch(getProductFalse())
    }
 }
+
 export const getTop5Product = async(dispatch) =>{
     dispatch(getProductStart())
    try{
        
        const res= await axios.get("/product/getTop5")
+       dispatch(getProductSuccess(res.data))
+    
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
+
+export const getProductSeller = async(accessToken,dispatch,id) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/getbyseller/"+id)
        dispatch(getProductSuccess(res.data))
     
    }catch(err){

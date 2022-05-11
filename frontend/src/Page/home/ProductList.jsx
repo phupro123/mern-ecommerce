@@ -5,10 +5,8 @@ import Navbar from "../../Components/Home/Navbar";
 import Newsletter from "../../Components/Home/Newsletter";
 import Products from "../../Components/Home/Products";
 
-const Container = styled.div``;
-
-const Title = styled.h1`
-  margin: 20px;
+const Container = styled.div`
+  padding-top: 80px;
 `;
 
 const FilterContainer = styled.div`
@@ -34,46 +32,48 @@ const Option = styled.option``;
 
 const ProductList = () => {
   return (
-    <Container>
+    <div>
       <Navbar />
-      <FilterContainer>
-        <Filter>
-          <FilterText>Filter Products:</FilterText>
-          <Select>
-            <Option disabled selected>
-              Color
-            </Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
-          </Select>
-          <Select>
-            <Option disabled selected>
-              Size
-            </Option>
-            <Option>XS</Option>
-            <Option>S</Option>
-            <Option>M</Option>
-            <Option>L</Option>
-            <Option>XL</Option>
-          </Select>
-        </Filter>
-        <Filter>
-          <FilterText>Sort Products:</FilterText>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Price (asc)</Option>
-            <Option>Price (desc)</Option>
-          </Select>
-        </Filter>
-      </FilterContainer>
+      <Container>
+        <FilterContainer>
+          <Filter>
+            <FilterText>Filter Products:</FilterText>
+            <Select>
+              <Option disabled selected>
+                Color
+              </Option>
+              <Option>White</Option>
+              <Option>Black</Option>
+              <Option>Red</Option>
+              <Option>Blue</Option>
+              <Option>Yellow</Option>
+              <Option>Green</Option>
+            </Select>
+            <Select>
+              <Option disabled selected>
+                Size
+              </Option>
+              <Option>XS</Option>
+              <Option>S</Option>
+              <Option>M</Option>
+              <Option>L</Option>
+              <Option>XL</Option>
+            </Select>
+          </Filter>
+          <Filter>
+            <FilterText>Sort Products:</FilterText>
+            <Select>
+              <Option selected>Newest</Option>
+              <Option>Price (asc)</Option>
+              <Option>Price (desc)</Option>
+            </Select>
+          </Filter>
+        </FilterContainer>
+      </Container>
       <Products />
       <Newsletter />
       <Footer />
-    </Container>
+    </div>
   );
 };
 

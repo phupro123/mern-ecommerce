@@ -2,6 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
 const User = require('./User');
+const Status = require('./OderStatus');
+const Payment = require('./Payment');
 //const AutoIncrement = require('mongoose-sequence')(mongoose);
 mongoose.plugin(slug);
 
@@ -14,9 +16,9 @@ const Oder = new Schema({
     phone: { type: String,  },
     adress: { type: String, },
     receiver: {type:String},
-    pay_id: { type: String, },
-    status: {type:String},
-},{ 
+    pay_id: { type: String, ref:Payment},
+    status: {type:String, ref:Status},
+},{ _id: false,
     timestamps: true
 });
 

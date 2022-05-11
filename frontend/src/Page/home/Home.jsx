@@ -10,8 +10,9 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <Slider />
-      <Categories />
+      <Slider style={{ margin: "80px" }} />
+      {/* <Categories /> */}
+      {/* <>Top 5 sản phẩm mới </> */}
       <Products />
       <Newsletter />
       <Footer />

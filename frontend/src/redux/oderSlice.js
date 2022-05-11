@@ -13,6 +13,11 @@ import {createSlice} from "@reduxjs/toolkit"
             error:false,
             success:false,
         },
+        full:{
+            detail:null,
+            isFetching:false,
+            error:false,
+        },
         msg:"",
 
     },
@@ -69,6 +74,18 @@ import {createSlice} from "@reduxjs/toolkit"
             state.msg = action.payload
         },
 
+        getFullStart:(state) =>{
+            state.full.isFetching= true
+        },
+        getFullSuccess: (state,action) =>{
+            state.full.isFetching=false;
+            state.full.detail=action.payload;
+        },
+        getFullFalse: (state) =>{
+            state.full.isFetching=false
+            state.full.error=true
+        },
+
     },
 })
 
@@ -85,6 +102,9 @@ export const {
     createStart,
     createSuccess,
     createFalse,
+    getFullStart,
+    getFullSuccess,
+    getFullFalse,
 } = oderSlice.actions
 
 export default oderSlice.reducer
