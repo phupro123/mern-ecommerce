@@ -19,9 +19,14 @@ const Single = () => {
   const navigate = useNavigate()
 
   const user = useSelector((state) => state.auth.login?.currentUser)
-  const selectedUser = useSelector((state) => state.user.users?.allUsers)
+  const selectedOder = useSelector((state) => state.oder.full?.detail)
   const {orderId} = useParams()
- // console.log(userId)
+  console.log(orderId)
+
+ const a=selectedOder
+ let plus = a?.reduce(function (total, currentValue) {
+  return total + currentValue.product_id.price*currentValue.quantity
+  }, 0);
 
   //Load trang
   useEffect(()=>{
@@ -35,39 +40,42 @@ const Single = () => {
 
 
   return (
-    <div className="single">
+    <div>
+    {selectedOder? (
+      <>
+     <div className="single">
       <Sidebar />
       <div className="singleContainer">
         <Navbar />
         <div className="top">
           <div className="left">
-            
+           
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src={selectedUser?.image}
+                src={selectedOder[0]?.oder_id.customer_id.image}
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{selectedUser?.fullname}</h1>
+                <h1 className="itemTitle">{selectedOder[0].oder_id.customer_id?.fullname}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">{selectedUser?.email}</span>
+                  <span className="itemValue">{selectedOder[0].oder_id.customer_id?.email}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
-                  <span className="itemValue">{selectedUser?.phone}</span>
+                  <span className="itemValue">{selectedOder[0].oder_id.customer_id?.phone}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
                   <span className="itemValue">
-                    Elton St. 234 Garden Yd. NewYork
+                  {selectedOder[0].oder_id?.address}
                   </span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Country:</span>
-                  <span className="itemValue">USA</span>
+                  <span className="itemKey">Receiver:</span>
+                  <span className="itemValue">{selectedOder[0].oder_id?.receiver}</span>
                 </div>
               </div>
             </div>
@@ -77,30 +85,21 @@ const Single = () => {
             <h1 className="title">Information</h1>
             <div className="item">
               <img
-                src={selectedUser?.image}
+                src={selectedOder?.image}
                 alt=""
                 className="itemImg"
               />
               <div className="details">
-                <h1 className="itemTitle">{selectedUser?.fullname}</h1>
+                
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">{selectedUser?.email}</span>
+                  <span className="itemKey">Order Id:</span>
+                  <span className="itemValue">{selectedOder[0]?.oder_id._id}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Phone:</span>
-                  <span className="itemValue">{selectedUser?.phone}</span>
+                  <span className="itemKey">Date:</span>
+                  <span className="itemValue">{selectedOder[0]?.oder_id.buy_date}</span>
                 </div>
-                <div className="detailItem">
-                  <span className="itemKey">Address:</span>
-                  <span className="itemValue">
-                    Elton St. 234 Garden Yd. NewYork
-                  </span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Country:</span>
-                  <span className="itemValue">USA</span>
-                </div>
+                <h1 className="itemTitle">Total grant: {plus}</h1>
               </div>
             </div>
           </div>
@@ -110,6 +109,14 @@ const Single = () => {
           <List/>
         </div>
       </div>
+      </div>
+      </>
+    ) : (    
+      <>
+  
+    </>
+    )}
+    
     </div>
   );
 };

@@ -13,6 +13,9 @@ const  {
 //GET ALL USERS
 router.get("/all",  productController.getAllProduct);
 
+router.get("/getbyseller/:id", productController.getProductBySeller);
+
+
 router.get("/getTop5", productController.getTop5Product);
 
 router.get("/category/1", productController.getCategory1);
@@ -27,7 +30,7 @@ router.get("/get/:id", productController.getProduct);
 
 router.put("/edit/:id", verifyTokenAndSeller, productController.update);
 
-router.post("/new", verifyTokenAndSeller, productController.newProduct);
+router.post("/new", productController.newProduct);
 
 
 

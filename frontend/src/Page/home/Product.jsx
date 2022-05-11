@@ -17,6 +17,9 @@ const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  position: relative;
+  top: 80px;
+  left: 0;
 `;
 
 const ImgContainer = styled.div`
@@ -92,7 +95,7 @@ const Product = () => {
     (state) => state.product.products?.allProduct
   );
 
-  const [file, setFile] = useState(selectedProduct.image);
+  const [file, setFile] = useState(selectedProduct?.image);
 
   // const [username,setUsername]= useState(selectedProduct.username);
   // const [password,setPassword] = useState(selectedProduct.password);
@@ -130,12 +133,12 @@ const Product = () => {
       <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src={selectedProduct.image} />
+          <Image src={selectedProduct?.image} />
         </ImgContainer>
         <InfoContainer>
-          <Title>{selectedProduct.name}</Title>
-          <Desc>{selectedProduct.description}</Desc>
-          <Price>{selectedProduct.price}</Price>
+          <Title>{selectedProduct?.name}</Title>
+          <Desc>{selectedProduct?.description}</Desc>
+          <Price>{selectedProduct?.price}</Price>
           <AddContainer>
             <AmountContainer>
               <Remove />

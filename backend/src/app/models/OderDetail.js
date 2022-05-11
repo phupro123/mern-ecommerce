@@ -13,7 +13,7 @@ const OderDetail = new Schema({
     unit_price: { type: String },
     quantity: { type: String,  },
     
-},{ 
+},{ _id: false,
     timestamps: true
 });
 //OderDetail.plugin(AutoIncrement);

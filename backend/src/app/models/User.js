@@ -51,7 +51,7 @@ const User = new Schema({
         slug:'username',
         unique: true},
     },
-    {
+    {_id: false,
     timestamps: true
 });
 

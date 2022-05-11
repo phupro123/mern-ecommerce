@@ -218,12 +218,12 @@ export const OderColumns = [
   {
     field: "customer",
     headerName: "Customer",
-    width: 140,
+    width: 160,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
          
-          {params.row.customer_id}
+          {params.row.customer_id.fullname}
         </div>
       );
     },
@@ -256,7 +256,7 @@ export const OderColumns = [
   {
     field: "receiver",
     headerName: "Receiver",
-    width: 100,
+    width: 120,
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus `}>
@@ -271,11 +271,11 @@ export const OderColumns = [
   {
     field: "payment",
     headerName: "Payment",
-    width: 100,
+    width: 130,
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus `}>
-          {params.row.pay_id}
+          {params.row.pay_id.name}
         </div>
       );
     },
@@ -283,11 +283,11 @@ export const OderColumns = [
   {
     field: "status",
     headerName: "Status",
-    width: 100,
+    width: 160,
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus `}>
-          {params.row.status}
+          {params.row.status.name}
         </div>
       );
     },

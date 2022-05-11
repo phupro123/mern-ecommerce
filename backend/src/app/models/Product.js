@@ -1,15 +1,17 @@
+
 const mongoose = require('mongoose')
+
 const Schema = mongoose.Schema;
-const slug = require('mongoose-slug-generator');
+
 //const AutoIncrement = require('mongoose-sequence')(mongoose);
-mongoose.plugin(slug);
+
 
 const Product = new Schema({
-    _id: {type: String},
-    name: { type: String, maxlength : 255  },
+    _id: String,
+    name: { type: String},
     price: { type: String },
     description: { type: String, },
-    img: { type: String,  },
+    image: { type: String, default:"https://cdn.honda.com.vn/motorbike-versions/October2021/mTuI6iTbdYCOkHBMnsNw.png" },
     amount: { type: String,  },
     status: { type: String, },
 
@@ -18,9 +20,8 @@ const Product = new Schema({
     brand_id: {type: String},
 
    
-    slug: {type:String, slug:'name', unique: true},
     
-},{
+},{_id: false ,
     timestamps: true
 });
 

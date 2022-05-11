@@ -7,53 +7,75 @@ import { registerUser } from "../../redux/apiRequest";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5)
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
     ),
-    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
-      center;
+    url("https://swall.teahub.io/photos/small/16-160847_yamaha-yzf-r1-2020-bike-4k-wallpaper-yzf.jpg");
+  transform: scaleX(-1);
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: absolute;
 `;
 
 const Wrapper = styled.div`
-  width: 40%;
-  padding: 20px;
-  background-color: white;
+  transform: scaleX(-1);
+  width: 25%;
+  padding: 40px;
+  background-color: rgba(216, 234, 243, 0.8);
+  border-radius: 16px;
+  border: 1px solid transparent;
+  position: relative;
+  top: 25px;
+  right: -150px;
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   font-weight: 300;
+  color: #3a7bd5;
 `;
 
 const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
+  text-align: center;
 `;
 
 const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
+  width: 100%;
+  margin: 10px 0;
   padding: 10px;
+  border-radius: 16px;
+  border: 1px solid #3a7bd5;
+`;
+
+const Button = styled.button`
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    #00d2ff 0,
+    #1fa5ea 51%,
+    #3a7bd5 100%
+  );
+  border: 1px solid transparent;
+  text-transform: uppercase;
+`;
+const Url = styled.a`
+  margin: 5px 0px;
+  font-size: 14px;
+  text-decoration: underline;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
 `;
 
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
-`;
-
-const Button = styled.button`
-  width: 40%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
-  cursor: pointer;
+  display: block;
 `;
 
 const Register = () => {
@@ -112,6 +134,7 @@ const Register = () => {
             name="role_id"
             className="table-group-action-input form-control"
             onChange={(e) => setRole(e.target.value)}
+            style={{ marginTop: "10px" }}
           >
             <option value="3">Customer</option>
             <option value="2">Seller</option>
@@ -119,9 +142,9 @@ const Register = () => {
 
           <Agreement>
             By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            data in accordance with the <br /> <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button type="submit">CREATE</Button>
+          <Button type="submit">REGISTER</Button>
         </Form>
       </Wrapper>
     </Container>

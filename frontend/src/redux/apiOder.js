@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { createFalse, createStart, createSuccess,deleteOderFalse, deleteOderStart, deleteOderSuccess,  editOderFalse,  editOderStart,  editOderSuccess,  getOderFalse, getOderStart, getOderSuccess } from "./oderSlice";
+import { createFalse, createStart, createSuccess,deleteOderFalse, deleteOderStart, deleteOderSuccess,  editOderFalse,  editOderStart,  editOderSuccess,  getFullFalse,  getFullStart,  getFullSuccess,  getOderFalse, getOderStart, getOderSuccess } from "./oderSlice";
 
 
 
@@ -52,18 +52,19 @@ export const getAllOder = async(accessToken,dispatch) =>{
    }
 }
 export const getFull = async(accessToken,dispatch,id) =>{
-    dispatch(getOderStart())
+    dispatch(getFullStart())
    try{
        
        const res= await axios.get("/oder/getFull/"+id,{
            headers: {token: `Bearer ${accessToken}`},
        })
-       dispatch(getOderSuccess(res.data))
+       dispatch(getFullSuccess(res.data))
     
        
            
    }catch(err){
-       dispatch(getOderFalse())
+       console.log(err)
+       dispatch(getFullFalse())
    }
 }
 export const getBySeller = async(accessToken,dispatch,id) =>{

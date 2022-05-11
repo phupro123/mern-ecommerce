@@ -1,3 +1,4 @@
+const { init } = require('../../models/Product');
 const Product = require('../../models/Product');
 
 
@@ -47,17 +48,23 @@ class ProductController {
 
      //  [POSt] /Product/new
      async newProduct  (req, res, next){
-        const formData= req.body
+         try { const formData= req.body
         
+            Product.init()
+
+            const product = new Product(formData)
     
-
-        const product = new Product(formData)
-
-        product.save()
-            .then(() => res.status(200).json(product))
-            .catch(error => {
-                res.status(500).json(error)
-            })
+            product.save()
+                .then((product) => res.status(200).json(product))
+                .catch(error => {
+                    console.log(error)
+                    res.status(500).json(error)
+                })
+             
+         } catch (error) {
+             console.log(error)
+         }
+       
         
     }
 
@@ -123,6 +130,19 @@ class ProductController {
        
         Product.find({category_id:"Xe mô tô"})
           
+            .then(product =>{
+                res.status(200).json(product);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+    async getProductBySeller(req,res,next){
+       
+        Product.find({seller_id:req.params.id})
             .then(product =>{
                 res.status(200).json(product);
                     

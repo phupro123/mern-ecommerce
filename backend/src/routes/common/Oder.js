@@ -27,7 +27,7 @@ router.put("/edit/:id", verifyTokenAndUserAuthorization, oderController.update);
 
 router.post("/new", verifyTokenAndUserAuthorization, oderController.newOder);
 
-router.get("/getFull/:id", verifyTokenAndUserAuthorization, oderController.getFullOder);
+router.get("/getFull/:id", oderController.getFullOder);
 
 
 module.exports = router;

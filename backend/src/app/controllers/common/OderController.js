@@ -9,7 +9,9 @@ class OderController {
     async getAllOder(req,res,next){
        
         Oder.find({})
-           // .populate('seller_id')
+            .populate('customer_id')
+            .populate('pay_id')
+            .populate('status')
             .then(oder =>{
                 res.status(200).json(oder);
                     

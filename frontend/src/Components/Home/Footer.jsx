@@ -57,7 +57,7 @@ const Title = styled.h3`
   font-weight: 700;
   padding-bottom: 10px;
   margin-bottom: 30px;
-  color: #f55f8d;
+  color: #3a7bd5;
   margin-top: 50px;
   line-height: 30px;
 `;
@@ -97,9 +97,9 @@ const ContactDiv = styled.span`
   width: 40px;
   background-image: linear-gradient(
     to right,
-    #f55f8d 0,
-    #f8ae56 51%,
-    #f55f8d 100%
+    #00d2ff 0,
+    #1fa5ea 51%,
+    #3a7bd5 100%
   );
   border-radius: 50%;
   color: white;
