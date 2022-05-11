@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { createFalse, createStart, createSuccess,deleteOderFalse, deleteOderStart, deleteOderSuccess,  editOderFalse,  editOderStart,  editOderSuccess,  getOdersFalse, getOdersStart, getOdersSuccess } from "./oderSlice";
+import { createFalse, createStart, createSuccess,deleteOderFalse, deleteOderStart, deleteOderSuccess,  editOderFalse,  editOderStart,  editOderSuccess,  getOderFalse, getOderStart, getOderSuccess } from "./oderSlice";
 
 
 
@@ -36,35 +36,79 @@ export const editOder = async(oder,dispatch,navigate,id,accessToken) =>{
    }
 }
 
-export const getAllOders = async(accessToken,dispatch) =>{
-    dispatch(getOdersStart())
+export const getAllOder = async(accessToken,dispatch) =>{
+    dispatch(getOderStart())
    try{
        
        const res= await axios.get("/oder/all",{
            headers: {token: `Bearer ${accessToken}`},
        })
-       dispatch(getOdersSuccess(res.data))
+       dispatch(getOderSuccess(res.data))
     
        
            
    }catch(err){
-       dispatch(getOdersFalse())
+       dispatch(getOderFalse())
    }
 }
-
+export const getFull = async(accessToken,dispatch,id) =>{
+    dispatch(getOderStart())
+   try{
+       
+       const res= await axios.get("/oder/getFull/"+id,{
+           headers: {token: `Bearer ${accessToken}`},
+       })
+       dispatch(getOderSuccess(res.data))
+    
+       
+           
+   }catch(err){
+       dispatch(getOderFalse())
+   }
+}
+export const getBySeller = async(accessToken,dispatch,id) =>{
+    dispatch(getOderStart())
+   try{
+       
+       const res= await axios.get("/oder/getseller/"+id,{
+           headers: {token: `Bearer ${accessToken}`},
+       })
+       dispatch(getOderSuccess(res.data))
+    
+       
+           
+   }catch(err){
+       dispatch(getOderFalse())
+   }
+}
+export const getByCustomer = async(accessToken,dispatch,id) =>{
+    dispatch(getOderStart())
+   try{
+       
+       const res= await axios.get("/oder/getyid/"+id,{
+           headers: {token: `Bearer ${accessToken}`},
+       })
+       dispatch(getOderSuccess(res.data))
+    
+       
+           
+   }catch(err){
+       dispatch(getOderFalse())
+   }
+}
 export const get1 = async(accessToken,dispatch,id) =>{
-    dispatch(getOdersStart())
+    dispatch(getOderStart())
    try{
        
        const res= await axios.get("/oder/get/"+id,{
            headers: {token: `Bearer ${accessToken}`},
        })
-       dispatch(getOdersSuccess(res.data))
+       dispatch(getOderSuccess(res.data))
     
        
            
    }catch(err){
-       dispatch(getOdersFalse())
+       dispatch(getOderFalse())
    }
 }
 

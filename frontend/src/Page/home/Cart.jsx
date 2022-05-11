@@ -1,15 +1,13 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 
-import Announcement from '../../Components/Home/Announcement';
-import Footer from '../../Components/Home/Footer';
-import Navbar from '../../Components/Home/Navbar';
+import Footer from "../../Components/Home/Footer";
+import Navbar from "../../Components/Home/Navbar";
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 20px;
-
 `;
 
 const Title = styled.h1`
@@ -34,9 +32,7 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-const TopTexts = styled.div`
- 
-`;
+const TopTexts = styled.div``;
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
@@ -46,7 +42,6 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
-
 `;
 
 const Info = styled.div`
@@ -56,7 +51,6 @@ const Info = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
- 
 `;
 
 const ProductDetail = styled.div`
@@ -105,13 +99,11 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
- 
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: 200;
-
 `;
 
 const Hr = styled.hr`
@@ -156,7 +148,6 @@ const Cart = () => {
   return (
     <Container>
       <Navbar />
-      <Announcement />
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>

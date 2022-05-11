@@ -7,7 +7,7 @@ class AuthController {
 
      //  [POSt] /login/register
      async register  (req, res, next){
-        const formData= req.body
+        const formData= req.body 
         
         const salt = await bcrypt.genSalt(10);
         formData.password = await bcrypt.hash(formData.password, salt);

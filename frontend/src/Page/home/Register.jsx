@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { registerUser } from "../../redux/apiRequest";
 
-
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -57,19 +56,18 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-
 const Register = () => {
-  const [username,setUsername]=useState("");
-  const [password,setPassword] = useState("");
-  const [email,setEmail]= useState("");
-  const [phone,setPhone]= useState("");
-  const [fullname,setFullname] = useState("");
-  const [role,setRole]=useState("3");  
-  const dispatch= useDispatch();
-  const navigate= useNavigate();
-  
-  const handleLogin = (e) =>{
-    e.preventDefault()
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [role, setRole] = useState("3");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
     const newUser = {
       username: username,
       password: password,
@@ -77,32 +75,53 @@ const Register = () => {
       phone,
       fullname,
       role,
-    }
-    registerUser(newUser,dispatch,navigate)
-  }
+    };
+    registerUser(newUser, dispatch, navigate);
+  };
 
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form onSubmit={handleLogin}>
-          <Input placeholder="Full Name" onChange={(e)=>setFullname(e.target.value)}/>
-          <Input placeholder="Email"  type='email'onChange={(e)=>setEmail(e.target.value)} />
-          <Input placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
-          <Input placeholder="Phone" onChange={(e)=>setPhone(e.target.value)}/>
-          <Input placeholder="Password" type='password' onChange={(e)=>setPassword(e.target.value)}/>
-          <Input placeholder="Confirm Password" type='password'/>
+          <Input
+            placeholder="Full Name"
+            onChange={(e) => setFullname(e.target.value)}
+          />
+          <Input
+            placeholder="Email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Input
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="Phone"
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <Input
+            placeholder="Password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Input placeholder="Confirm Password" type="password" />
 
-          <select name='role_id' className="table-group-action-input form-control" onChange={(e)=>setRole(e.target.value)}> 
-            <option value="3" >Customer</option>
-            <option value="2" >Seller</option>
-           </select>
+          <select
+            name="role_id"
+            className="table-group-action-input form-control"
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="3">Customer</option>
+            <option value="2">Seller</option>
+          </select>
 
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
-          </Agreement>  
-          <Button type="submit" >CREATE</Button>
+          </Agreement>
+          <Button type="submit">CREATE</Button>
         </Form>
       </Wrapper>
     </Container>

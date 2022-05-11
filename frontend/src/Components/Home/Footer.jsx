@@ -1,38 +1,41 @@
-import {
-  Facebook,
-  Instagram,
-  MailOutline,
-  Phone,
-  Pinterest,
-  Room,
-  Twitter,
-} from "@material-ui/icons";
+import { Facebook, Instagram, Pinterest, Twitter } from "@material-ui/icons";
 import styled from "styled-components";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleRight,
+  faPhone,
+  faEnvelope,
+  faMapMarkerAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   display: flex;
-
+  background-color: #0e1b1f;
+  color: white;
+  padding: 0 150px;
 `;
 
 const Left = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 2;
   padding: 20px;
 `;
 
-const Logo = styled.h1``;
+const Logo = styled.div`
+  text-align: center;
+`;
 
 const Desc = styled.p`
   margin: 20px 0px;
+  text-align: justify;
 `;
 
 const SocialContainer = styled.div`
   display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
 `;
 
-const SocialIcon = styled.div`
+const Icon = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -41,36 +44,46 @@ const SocialIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
 `;
 
 const Center = styled.div`
-  flex: 1;
+  flex: 3;
   padding: 20px;
-  
+  display: flex;
 `;
 
 const Title = styled.h3`
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 10px;
   margin-bottom: 30px;
+  color: #f55f8d;
+  margin-top: 50px;
+  line-height: 30px;
 `;
 
 const List = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
   flex-wrap: wrap;
+  width: 50%;
 `;
 
 const ListItem = styled.li`
-  width: 50%;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: #858585;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    color: white;
+  }
 `;
 
 const Right = styled.div`
-  flex: 1;
+  flex: 2;
   padding: 20px;
-  
 `;
 
 const ContactItem = styled.div`
@@ -79,60 +92,180 @@ const ContactItem = styled.div`
   align-items: center;
 `;
 
+const ContactDiv = styled.span`
+  height: 40px;
+  width: 40px;
+  background-image: linear-gradient(
+    to right,
+    #f55f8d 0,
+    #f8ae56 51%,
+    #f55f8d 100%
+  );
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  margin-right: 10px;
+`;
+
 const Payment = styled.img`
-    width: 50%;
+  width: 50%;
 `;
 
 const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>VINTAGE.</Logo>
+        <Logo>
+          <img
+            src="https://htpshop.vn/public/userfiles/logo/htp-shop.webp"
+            style={{ height: "100px" }}
+          />
+        </Logo>
         <Desc>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
+          HPT trang web thương mại điện tử số một Việt Nam chuyên về các sản
+          phảm xe hai bánh, xe máy, xe tay ga,... Luôn có nhiều chương trình
+          khuyến mãi hấp dẫn, miễn phí giao hàng trên toàn quốc với các dòng xe
+          đến từ các thương hiệu nổi tiếng. <br /> <br />
+          HPT luôn cam kết phục vụ với chất lượng tốt nhất dành cho khách hàng.
         </Desc>
         <SocialContainer>
-          <SocialIcon color="3B5999">
+          <Icon color="3B5999">
             <Facebook />
-          </SocialIcon>
-          <SocialIcon color="E4405F">
+          </Icon>
+          <Icon color="E4405F">
             <Instagram />
-          </SocialIcon>
-          <SocialIcon color="55ACEE">
+          </Icon>
+          <Icon color="55ACEE">
             <Twitter />
-          </SocialIcon>
-          <SocialIcon color="E60023">
+          </Icon>
+          <Icon color="E60023">
             <Pinterest />
-          </SocialIcon>
+          </Icon>
         </SocialContainer>
       </Left>
       <Center>
-        <Title>Useful Links</Title>
         <List>
-          <ListItem>Home</ListItem>
-          <ListItem>Cart</ListItem>
-          <ListItem>Man Fashion</ListItem>
-          <ListItem>Woman Fashion</ListItem>
-          <ListItem>Accessories</ListItem>
-          <ListItem>My Account</ListItem>
-          <ListItem>Order Tracking</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Wishlist</ListItem>
-          <ListItem>Terms</ListItem>
+          <Title>Ours Link</Title>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Home
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            About us
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Service
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Team
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Blog
+          </ListItem>
+        </List>
+        <List>
+          <Title>Ours Service</Title>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Delivery Information
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Customer Service
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Order Tracking
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Shipping & Returns
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Contact Us
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Careers
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Payment Methods
+          </ListItem>
+          <ListItem>
+            <FontAwesomeIcon
+              icon={faAngleRight}
+              style={{ marginRight: "10px" }}
+            />
+            Blog
+          </ListItem>
         </List>
       </Center>
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{marginRight:"10px"}}/> 123 Somewhere in the world 123
+          <ContactDiv>
+            <FontAwesomeIcon icon={faMapMarkerAlt} />
+          </ContactDiv>
+          Số 1, Võ Văn Ngân, Linh Chiểu
+          <br />
+          Thủ Đức, Thành phố Hồ Chí Minh
         </ContactItem>
         <ContactItem>
-          <Phone style={{marginRight:"10px"}}/> +1 234 567 890
+          <ContactDiv>
+            <FontAwesomeIcon icon={faPhone} />
+          </ContactDiv>
+          1800-123-4567
         </ContactItem>
         <ContactItem>
-          <MailOutline style={{marginRight:"10px"}} /> contact@vintage.com
+          <ContactDiv>
+            <FontAwesomeIcon icon={faEnvelope} />
+          </ContactDiv>
+          contact@gmail.com
+          <br />
+          service@gmail.com
         </ContactItem>
         <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>

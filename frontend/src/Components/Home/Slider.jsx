@@ -2,116 +2,68 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../../data";
-
-
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  position: relative;
-  overflow: hidden;
- 
-`;
-
-const Arrow = styled.div`
-  width: 50px;
-  height: 50px;
-  background-color: #fff7f7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${(props) => props.direction === "left" && "10px"};
-  right: ${(props) => props.direction === "right" && "10px"};
-  margin: auto;
-  cursor: pointer;
-  opacity: 0.5;
-  z-index: 2;
-`;
-
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  transition: all 1.5s ease;
-  transform: translateX(${(props) => props.slideIndex * -100}vw);
-`;
-
-const Slide = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  background-color: #${(props) => props.bg};
-`;
-
-const ImgContainer = styled.div`
-  height: 100%;
-  flex: 1;
-`;
+import { Carousel } from "react-bootstrap";
 
 const Image = styled.img`
-  height: 80%;
-`;
-
-const InfoContainer = styled.div`
-  flex: 1;
-  padding: 50px;
-`;
-
-const Title = styled.h1`
-  font-size: 70px;
-`;
-
-const Desc = styled.p`
-  margin: 50px 0px;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 3px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
-  background-color: transparent;
-  cursor: pointer;
+  height: 750px;
+  object-fit: cover;
+  transition: all 1s;
+  object-position: center;
 `;
 
 const Slider = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
-  const handleClick = (direction) => {
-    if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
-    } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
-    }
-  };
-
   return (
-    <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowLeftOutlined />
-      </Arrow>
-      <Wrapper slideIndex={slideIndex}>
-        {sliderItems.map((item) => (
-          <Slide bg={item.bg} key={item.id}>
-            <ImgContainer>
-              <Image src={item.img} />
-            </ImgContainer>
-            <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
-            </InfoContainer>
-          </Slide>
-        ))}
-      </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowRightOutlined />
-      </Arrow>
-    </Container>
+    <Carousel fade>
+      <Carousel.Item>
+        <Image
+          className="d-block w-100"
+          src="https://wallpaperaccess.com/full/1881106.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>CÙNG VỚI</h3>
+          <p>HTP Shop</p>
+          <h3>CHINH PHỤC TƯƠNG LAI</h3>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Image
+          className="d-block w-100"
+          src="https://i.pinimg.com/originals/29/70/e7/2970e7b6c91e63e406b626aa95c31671.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>BẮT ĐẦU HÀNH TRÌNH NÀO</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Image
+          className="d-block w-100"
+          src="http://1.bp.blogspot.com/-dybm_gQ_UWM/VL6sDe0XcpI/AAAAAAAAVGc/P__ELsy3hUM/s1600/hinh-anh-xe-moto-7.jpg"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+          <h3>KHÔNG GIỚI HẠN</h3>
+          <p>Sống hết mình</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Image
+          className="d-block w-100"
+          src="https://img4.thuthuatphanmem.vn/uploads/2020/04/28/hinh-nen-3d-xe-moto_025907885.jpg"
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Cháy hết mình</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
   );
 };
 

@@ -15,11 +15,13 @@ const Customer = () => {
   return (
     <Routes>
       <Route path="/"element={ <Home/> }/>
+      <Route path="/test"element={ <HomePage/> }/>
       <Route path="/product"element={ <Product/> }/>
       <Route path="/productlist"element={ <ProductList/> }/>
       <Route path="/cart"element={ <Cart/> }/>
        <Route path="/login" element={ <Login />}/>
        <Route path="/register" element={<Register />}/>
+       
     </Routes>
   )
    

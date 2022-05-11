@@ -1,8 +1,9 @@
+
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
 
-const Category = new Schema({
+const Payment = new Schema({
     _id: {type: String},
     name: { type: String},
    
@@ -10,4 +11,4 @@ const Category = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Category',Category);
+module.exports = mongoose.model('Payment',Payment);

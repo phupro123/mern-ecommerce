@@ -13,14 +13,14 @@ const New = ({  title,action }) => {
 
   const user = useSelector((state) => state.auth.login?.currentUser)
   const selectedUser = useSelector((state) => state.user.users?.allUsers)
-  const [file, setFile] = useState(selectedUser.image);
+  const [file, setFile] = useState(selectedUser?.image);
 
-  const [username,setUsername]=useState(selectedUser.username);
-  const [password,setPassword] = useState(selectedUser.password);
-  const [email,setEmail]= useState(selectedUser.email);
-  const [phone,setPhone]= useState(selectedUser.phone);
-  const [fullname,setFullname] = useState(selectedUser.fullname);
-  const [role,setRole]=useState(selectedUser.role);  
+  const [username,setUsername]=useState(selectedUser?.username);
+  const [password,setPassword] = useState(selectedUser?.password);
+  const [email,setEmail]= useState(selectedUser?.email);
+  const [phone,setPhone]= useState(selectedUser?.phone);
+  const [fullname,setFullname] = useState(selectedUser?.fullname);
+  const [role,setRole]=useState(selectedUser?.role);  
   const {id}= useParams();
  
   //Load trang
@@ -61,7 +61,7 @@ const New = ({  title,action }) => {
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : `${selectedUser.image}`
+                  : `${selectedUser?.image}`
               }
               alt=""
             />
@@ -82,11 +82,11 @@ const New = ({  title,action }) => {
 
                 <div className="formInput" >
                   <label>Username</label>
-                  <input type='text' placeholder={selectedUser.username} onChange={(e)=>setUsername(e.target.value)} />
+                  <input type='text' placeholder={selectedUser?.username} onChange={(e)=>setUsername(e.target.value)} />
                 </div>
                 <div className="formInput" >
                   <label>Full Name</label>
-                  <input type='text' placeholder={selectedUser.fullname} onChange={(e)=>setFullname(e.target.value)}/>
+                  <input type='text' placeholder={selectedUser?.fullname} onChange={(e)=>setFullname(e.target.value)}/>
                 </div>
            
                 <div className="formInput" >
@@ -96,7 +96,7 @@ const New = ({  title,action }) => {
            
                 <div className="formInput" >
                   <label>Email</label>
-                  <input type='email' placeholder={selectedUser.email} onChange={(e)=>setEmail(e.target.value)} />
+                  <input type='email' placeholder={selectedUser?.email} onChange={(e)=>setEmail(e.target.value)} />
                 </div>
            
                 <div className="formInput" >
@@ -106,10 +106,10 @@ const New = ({  title,action }) => {
            
                 <div className="formInput" >
                   <label>Phone</label>
-                  <input type='text' placeholder={selectedUser.phone}  onChange={(e)=>setPhone(e.target.value)}/>
+                  <input type='text' placeholder={selectedUser?.phone}  onChange={(e)=>setPhone(e.target.value)}/>
                 </div>
                 
-                <select className="table-group-action-input form-control" onChange={(e)=>setRole(e.target.value)} placeholder={selectedUser.role} > 
+                <select className="table-group-action-input form-control" onChange={(e)=>setRole(e.target.value)} placeholder={selectedUser?.role} > 
                 <option value="3" >Customer</option>
                 <option value="2" >Seller</option>
               </select>
