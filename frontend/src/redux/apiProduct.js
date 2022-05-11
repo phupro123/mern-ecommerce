@@ -49,6 +49,62 @@ export const getAllProduct = async(accessToken,dispatch) =>{
    }
 }
 
+export const getCategory1 = async(dispatch) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/category/1")
+       dispatch(getProductSuccess(res.data))
+    
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
+export const getCategory2 = async(dispatch) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/category/2")
+       dispatch(getProductSuccess(res.data))
+    
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
+export const getCategory3 = async(dispatch) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/category/3")
+       dispatch(getProductSuccess(res.data))
+    
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
+export const getCategory4 = async(dispatch) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/category/4")
+       dispatch(getProductSuccess(res.data))
+    
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
+export const getTop5Product = async(dispatch) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/getTop5")
+       dispatch(getProductSuccess(res.data))
+    
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
+
 export const get1Product = async(accessToken,dispatch,id) =>{
     dispatch(getProductStart())
    try{

@@ -1,12 +1,13 @@
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
-const Brand ={
-    '1': 'Honda',
-    '2': 'Yamaha',
-    '3': 'Suzuki',
-    '4': 'SYM',
-    '5': 'Kawasaki',
-    '6': 'BWM',
-    '7': 'Ducati',
-}
 
-module.exports = Brand
+const Brand = new Schema({
+    _id: {type: String},
+    name: { type: String},
+   
+},{
+    timestamps: true
+});
+
+module.exports = mongoose.model('Brand',Brand);

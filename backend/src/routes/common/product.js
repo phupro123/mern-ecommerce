@@ -13,6 +13,13 @@ const  {
 //GET ALL USERS
 router.get("/all",  productController.getAllProduct);
 
+router.get("/getTop5", productController.getTop5Product);
+
+router.get("/category/1", productController.getCategory1);
+
+router.get("/category/2", productController.getCategory2);
+router.get("/category/3", productController.getCategory3);
+router.get("/category/4", productController.getCategory4);
 //DELETE USER
 router.delete("/delete/:id", verifyTokenAndSeller, productController.deleteProduct);
 
@@ -21,5 +28,7 @@ router.get("/get/:id", productController.getProduct);
 router.put("/edit/:id", verifyTokenAndSeller, productController.update);
 
 router.post("/new", verifyTokenAndSeller, productController.newProduct);
+
+
 
 module.exports = router;

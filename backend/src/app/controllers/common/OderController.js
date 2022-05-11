@@ -1,4 +1,6 @@
 const Oder = require('../../models/Oder');
+const OderDetail = require('../../models/OderDetail')
+const mongoose = require('mongoose')
 
 
 class OderController {
@@ -7,6 +9,7 @@ class OderController {
     async getAllOder(req,res,next){
        
         Oder.find({})
+           // .populate('seller_id')
             .then(oder =>{
                 res.status(200).json(oder);
                     
@@ -58,6 +61,65 @@ class OderController {
                 res.status(500).json(error)
             })
         
+    }
+
+  //  [POSt] /
+  async getFullOder  (req, res, next){
+
+
+    OderDetail.find({oder_id:req.params.id})
+        .populate('oder_id')
+        .populate({
+            path: 'oder_id',
+            populate: {path:'customer_id'},
+            
+        })
+        .populate({
+            path: 'oder_id',
+            populate: {path:'seller_id'},
+            
+        })
+       
+        .populate('product_id')
+        .then((oder) => {
+            console.log(req.params.id)
+            res.status(200).json(oder)
+        })
+        .catch(error => {
+            res.status(500).json(error)
+        })
+    
+    }
+    // [GET] /oder/all
+    async getAllOderById(req,res,next){
+       
+        Oder.find({customer_id:req.params.id})
+           // .populate('seller_id')
+            .then(oder =>{
+                res.status(200).json(oder);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+
+     // [GET] /oder/all
+     async getAllOderByIdSeller(req,res,next){
+       
+        Oder.find({seller_id:req.params.id})
+           // .populate('seller_id')
+            .then(oder =>{
+                res.status(200).json(oder);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
     }
 }
 

@@ -102,7 +102,7 @@ export const productColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.image} alt="avatar" />
+          <img className="cellImg2" src={params.row.image} alt="avatar" />
           {params.row.name}
         </div>
       );
@@ -121,19 +121,7 @@ export const productColumns = [
       );
     },
   },
-  {
-    field: "email",
-    headerName: "Email",
-    width: 150,
-    renderCell: (params) => {
-      return (
-        <div className="cellWithImg">
-         
-          {params.row.email}
-        </div>
-      );
-    },
-  },
+
 
   {
     field: "category",
@@ -167,7 +155,20 @@ export const productColumns = [
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus `}>
-          {params.row.amout}
+          {params.row.amount}
+        </div>
+      );
+    },
+  },
+  {
+    field: "seller",
+    headerName: "Seller",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+         
+          {params.row.seller_id}
         </div>
       );
     },
@@ -186,28 +187,112 @@ export const productColumns = [
     },
   },
 
+  
+];
+
+export const OderColumns = [
+  { field: "_id", headerName: "ID", width: 50 ,
+  renderCell: (params) => {
+    return (
+      <div className="cellWithImg">
+       
+        {params.row._id}
+      </div>
+    );
+  },
+  },
   {
-    field: "seller_id",
-    headerName: "Seller",
+    field: "time",
+    headerName: "Order day",
+    width: 215  ,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+          {params.row.buy_date}
+        </div>
+      );
+    },
+  },
+ 
+
+  {
+    field: "customer",
+    headerName: "Customer",
+    width: 140,
+    renderCell: (params) => {
+      return (
+        <div className="cellWithImg">
+         
+          {params.row.customer_id}
+        </div>
+      );
+    },
+  },
+  {
+    field: "phone",
+    headerName: "phone",
     width: 100,
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus `}>
-          {params.row.seller_id}
+          {params.row.phone}
+        </div>
+      );
+    },
+  },
+  {
+    field: "address",
+    headerName: "Address",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.address}
+        </div>
+      );
+    },
+  },
+
+  {
+    field: "receiver",
+    headerName: "Receiver",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.receiver}
+        </div>
+      );
+    },
+  },
+
+  
+
+  {
+    field: "payment",
+    headerName: "Payment",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.pay_id}
+        </div>
+      );
+    },
+  },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus `}>
+          {params.row.status}
         </div>
       );
     },
   },
 ];
-const b = (role)=>{
-  if(role ==='3')
-  return 'Customer'
-  else if(role==='2')
-  return 'Seller'
-  else 
-    return 'Admin'
-}
-
 //temporary data
 export const userRows = [
   {

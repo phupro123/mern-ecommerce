@@ -60,6 +60,80 @@ class ProductController {
             })
         
     }
+
+    async getTop5Product(req,res,next){
+       
+        Product.find({})
+            .limit(5)
+            .then(product =>{
+                res.status(200).json(product);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+
+    async getCategory1(req,res,next){
+       
+        Product.find({category_id:"Xe số"})
+          
+            .then(product =>{
+                res.status(200).json(product);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+
+    async getCategory2(req,res,next){
+       
+        Product.find({category_id:"Xe tay ga"})
+          
+            .then(product =>{
+                res.status(200).json(product);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+    async getCategory3(req,res,next){
+       
+        Product.find({category_id:"Xe côn tay"})
+          
+            .then(product =>{
+                res.status(200).json(product);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+    async getCategory4(req,res,next){
+       
+        Product.find({category_id:"Xe mô tô"})
+          
+            .then(product =>{
+                res.status(200).json(product);
+                    
+            })
+            .catch(()=>{
+                res.status(500).json(err);
+            })
+        
+        // res.send('detail'+req.params.slug)    
+    }
+
 }
 
 module.exports = new  ProductController();
