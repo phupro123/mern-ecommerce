@@ -5,7 +5,7 @@ import Product from "./Product";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getCategory1 } from "../../redux/apiProduct";
+import { getCategory4 } from "../../redux/apiProduct";
 
 const Container = styled.div`
   padding: 20px;
@@ -47,7 +47,7 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const CategoryProducts1 = () => {
+const CategoryProducts4 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -60,7 +60,7 @@ const CategoryProducts1 = () => {
 
   //Load trang
   useEffect(() => {
-    getCategory1(dispatch);
+    getCategory4(dispatch);
   }, []);
 
   const handleLogin = (e) => {
@@ -81,4 +81,4 @@ const CategoryProducts1 = () => {
   );
 };
 
-export default CategoryProducts1;
+export default CategoryProducts4;
