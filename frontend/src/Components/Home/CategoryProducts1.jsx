@@ -9,16 +9,24 @@ import { getCategory1 } from "../../redux/apiProduct";
 
 const Container = styled.div`
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 30px;
+  margin-top: 40px;
 `;
 
 const ContainerItem = styled.div`
   padding: 20px;
-  width: 20%;
+  width: 100%;
   height: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 60px 0 rgb(0 0 0 / 10%);
+  transform: translateY(0);
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-20px);
+  }
 `;
 
 const Name = styled.h5`
@@ -45,7 +53,7 @@ const CategoryProducts1 = () => {
 
   const user = useSelector((state) => state.auth.login?.currentUser);
   const productList = useSelector(
-    (state) => state.product.products?.allProduct
+    (state) => state.product.one?.product
   );
 
   const { id } = useParams();

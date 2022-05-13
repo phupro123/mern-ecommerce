@@ -12,6 +12,9 @@ import Cart from "./Page/home/Cart";
 import Product from "./Page/home/Product";
 import ProductList from "./Page/home/ProductList";
 import Caterogy1 from "./Page/home/Caterogy1";
+import Caterogy2 from "./Page/home/Caterogy2";
+import Caterogy3 from "./Page/home/Caterogy3";
+import Caterogy4 from "./Page/home/Caterogy4";
 const Customer = () => {
   return (
     <Routes>
@@ -23,8 +26,9 @@ const Customer = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/category1" element={<Caterogy1 />} />
-      
-       
+      <Route path="/category2" element={<Caterogy2 />} />
+      <Route path="/category3" element={<Caterogy3 />} />
+      <Route path="/category4" element={<Caterogy4 />} />
     </Routes>
   )
    

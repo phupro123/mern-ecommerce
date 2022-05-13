@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartShopping
+} from "@fortawesome/free-solid-svg-icons";
 import {
   Nav,
   NavDropdown,
@@ -38,7 +42,7 @@ const Navbar1 = () => {
         style={{ height: "80px", padding: "0 150px" }}
       >
         <Container fluid>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <img
               src="https://htpshop.vn/public/userfiles/logo/htp-shop.webp"
               style={{ height: "50px" }}
@@ -61,6 +65,7 @@ const Navbar1 = () => {
                 <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+               
               </NavDropdown>
               <NavDropdown
                 title="CATEROGY"
@@ -97,6 +102,7 @@ const Navbar1 = () => {
                 <NavDropdown.Item href="/">Terms & Conditions</NavDropdown.Item>
               </NavDropdown>
             </Nav>
+            
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -106,6 +112,11 @@ const Navbar1 = () => {
               />
               <Button>Search</Button>
             </Form>
+            <a href='cart' style={{textDecoration: "none", fontSize:"20px"}}>
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              style={{ marginLeft: "30px" ,width:'30px',height:'30px'}}
+            />Cart</a>
           </Navbar.Collapse>
         </Container>
       </Navbar>

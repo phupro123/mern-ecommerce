@@ -5,20 +5,28 @@ import Product from "./Product";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getTop5Product } from "../../redux/apiProduct";
+import { getCategory4 } from "../../redux/apiProduct";
 
 const Container = styled.div`
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 30px;
+  margin-top: 40px;
 `;
 
 const ContainerItem = styled.div`
   padding: 20px;
-  width: 20%;
+  width: 100%;
   height: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 60px 0 rgb(0 0 0 / 10%);
+  transform: translateY(0);
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-20px);
+  }
 `;
 
 const Name = styled.h5`
@@ -39,50 +47,38 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Products = () => {
+const CategoryProducts4 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
- 
+
   const user = useSelector((state) => state.auth.login?.currentUser);
   const productList = useSelector(
     (state) => state.product.one?.product
   );
 
-  // const selectedProduct = useSelector(
-  //   (state) => state.product.products?.allProduct
-  // );
-
-  // const [file, setFile] = useState(selectedProduct?.image);
-
   const { id } = useParams();
 
   //Load trang
   useEffect(() => {
-    getTop5Product(dispatch);
-   
+    getCategory4(dispatch);
   }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
   };
   return (
-    
     <Container>
-     
-   
-       {productList?.map((product) => (
+      {productList?.map((product) => (
         <ContainerItem>
-          <Link to={`{/product/${product?._id}}`}>
+          <Link to={`/product/${product?._id}`}>
             <Image src={product?.image} />
           </Link>
           <Name>{product?.name}</Name>
           <Price>{product?.price}</Price>
         </ContainerItem>
       ))}
-  
-     
     </Container>
   );
 };
 
-export default Products;
+export default CategoryProducts4;

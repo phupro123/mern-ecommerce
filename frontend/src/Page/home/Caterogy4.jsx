@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Footer from "../../Components/Home/Footer";
 import Navbar from "../../Components/Home/Navbar";
 import Newsletter from "../../Components/Home/Newsletter";
-import CaterogyProducts1 from "../../Components/Home/CategoryProducts1";
+import CaterogyProducts4 from "../../Components/Home/CategoryProducts4";
 
 const Container = styled.div`
-  padding: 80px 150px 0;
+  padding: 80px 150px;
 `;
 
 const Title = styled.h1`
@@ -37,12 +37,12 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 
-const Caterogy1 = () => {
+const Caterogy4 = () => {
   return (
     <div>
       <Navbar />
       <Container>
-        <Title>Xe số</Title>
+        <Title>Xe mô tô</Title>
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>
@@ -68,11 +68,11 @@ const Caterogy1 = () => {
           </Filter>
         </FilterContainer>
       </Container>
-      <CaterogyProducts1 />
+      <CaterogyProducts4 />
       <Newsletter />
       <Footer />
     </div>
   );
 };
 
-export default Caterogy1;
+export default Caterogy4;

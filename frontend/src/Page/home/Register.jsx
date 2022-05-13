@@ -3,7 +3,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { registerUser } from "../../redux/apiRequest";
-
+// import {  toast } from 'react-toastify';
+// import React from 'react';
+// import 'react-toastify/dist/ReactToastify.css';
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -98,8 +100,11 @@ const Register = () => {
       fullname,
       role,
     };
+    
     registerUser(newUser, dispatch, navigate);
+    
   };
+ 
 
   return (
     <Container>
@@ -144,9 +149,12 @@ const Register = () => {
             By creating an account, I consent to the processing of my personal
             data in accordance with the <br /> <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button type="submit">REGISTER</Button>
+          
+          <Button type="submit" >REGISTER</Button>
+         
         </Form>
       </Wrapper>
+      
     </Container>
   );
 };

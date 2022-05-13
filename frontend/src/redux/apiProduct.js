@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { createFalse, createStart, createSuccess,deleteProductFalse, deleteProductStart, deleteProductSuccess,  editProductFalse,  editProductStart,  editProductSuccess,  getProductFalse, getProductStart, getProductSuccess } from "./productSlice";
+import { createFalse, createStart, createSuccess,deleteProductFalse, deleteProductStart, deleteProductSuccess,  editProductFalse,  editProductStart,  editProductSuccess,  get1ProductFalse,  get1ProductStart,  get1ProductSuccess,  getProductFalse, getProductStart, getProductSuccess } from "./productSlice";
 
 
 
@@ -50,59 +50,59 @@ export const getAllProduct = async(accessToken,dispatch) =>{
 }
 
 export const getCategory1 = async(dispatch) =>{
-    dispatch(getProductStart())
+    dispatch(get1ProductStart())
    try{
        
        const res= await axios.get("/product/category/1")
-       dispatch(getProductSuccess(res.data))
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 export const getCategory2 = async(dispatch) =>{
-    dispatch(getProductStart())
+    dispatch(get1ProductStart())
    try{
        
        const res= await axios.get("/product/category/2")
-       dispatch(getProductSuccess(res.data))
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 export const getCategory3 = async(dispatch) =>{
-    dispatch(getProductStart())
+    dispatch(get1ProductStart())
    try{
        
        const res= await axios.get("/product/category/3")
-       dispatch(getProductSuccess(res.data))
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 export const getCategory4 = async(dispatch) =>{
-    dispatch(getProductStart())
+    dispatch(get1ProductStart())
    try{
        
        const res= await axios.get("/product/category/4")
-       dispatch(getProductSuccess(res.data))
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 
 export const getTop5Product = async(dispatch) =>{
-    dispatch(getProductStart())
+    dispatch(get1ProductStart())
    try{
        
        const res= await axios.get("/product/getTop5")
-       dispatch(getProductSuccess(res.data))
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 
