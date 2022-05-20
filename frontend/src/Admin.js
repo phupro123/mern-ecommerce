@@ -15,6 +15,7 @@ import SingleOder from'./Page/admin/single/SingleOder'
 import New from'.//Page/admin/new/New'
 import NewProduct from'.//Page/admin/new/NewProduct'
 import {userInputs,productInputs} from './formSource'
+
 const Admin = () => {
   return (
     

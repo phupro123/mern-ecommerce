@@ -20,4 +20,7 @@ router.get("/get/:id", verifyTokenAndUserAuthorization, userController.getUser);
 
 router.put("/edit/:id", verifyTokenAndUserAuthorization, userController.update);
 
+router.get("/getLength", userController.getUserLength);
+
+
 module.exports = router;

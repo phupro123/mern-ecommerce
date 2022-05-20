@@ -1,6 +1,6 @@
 import axios from "axios"
 
-import { createFalse, createStart, createSuccess,deleteProductFalse, deleteProductStart, deleteProductSuccess,  editProductFalse,  editProductStart,  editProductSuccess,  getProductFalse, getProductStart, getProductSuccess } from "./productSlice";
+import { createFalse, createStart, createSuccess,deleteProductFalse, deleteProductStart, deleteProductSuccess,  editProductFalse,  editProductStart,  editProductSuccess,  get1ProductFalse,  get1ProductStart,  get1ProductSuccess,  getProductFalse, getProductStart, getProductSuccess } from "./productSlice";
 
 
 
@@ -49,60 +49,51 @@ export const getAllProduct = async(accessToken,dispatch) =>{
    }
 }
 
-export const getCategory1 = async(dispatch) =>{
-    dispatch(getProductStart())
+export const getCategory1 = async(dispatch,id) =>{
+    dispatch(get1ProductStart())
    try{
        
-       const res= await axios.get("/product/category/1")
-       dispatch(getProductSuccess(res.data))
+       const res= await axios.get("/product/category/"+id)
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
-   }
-}
-export const getCategory2 = async(dispatch) =>{
-    dispatch(getProductStart())
-   try{
-       
-       const res= await axios.get("/product/category/2")
-       dispatch(getProductSuccess(res.data))
-    
-   }catch(err){
-       dispatch(getProductFalse())
-   }
-}
-export const getCategory3 = async(dispatch) =>{
-    dispatch(getProductStart())
-   try{
-       
-       const res= await axios.get("/product/category/3")
-       dispatch(getProductSuccess(res.data))
-    
-   }catch(err){
-       dispatch(getProductFalse())
-   }
-}
-export const getCategory4 = async(dispatch) =>{
-    dispatch(getProductStart())
-   try{
-       
-       const res= await axios.get("/product/category/4")
-       dispatch(getProductSuccess(res.data))
-    
-   }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 
+// export const getLengthProduct = async() =>{
+    
+//    try{
+       
+//        const res= await axios.get("/product/getLength")
+       
+//         return res
+//    }catch(err){
+//      return err
+//    }
+// }
+
+export const getProductSearch = async(dispatch) =>{
+    
+    try{
+        
+        const res= await axios.get("/product/search")
+         return res
+    }catch(err){
+      return err
+    }
+ }
+
+
 export const getTop5Product = async(dispatch) =>{
-    dispatch(getProductStart())
+    dispatch(get1ProductStart())
    try{
        
        const res= await axios.get("/product/getTop5")
-       dispatch(getProductSuccess(res.data))
+       dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
-       dispatch(getProductFalse())
+       dispatch(get1ProductFalse())
    }
 }
 
@@ -134,6 +125,17 @@ export const get1Product = async(accessToken,dispatch,id) =>{
    }
 }
 
+export const get1ProductBySlug = async(dispatch,slug) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/getbyslug/"+slug)
+       dispatch(getProductSuccess(res.data))
+           
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
 
 
 export const deleteProduct = async(accessToken,dispatch,id) =>{

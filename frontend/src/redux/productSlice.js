@@ -13,6 +13,11 @@ import {createSlice} from "@reduxjs/toolkit"
             error:false,
             success:false,
         },
+        one:{
+            product:null,
+            isFetching:false,
+            error:false,
+        },
         msg:"",
 
     },
@@ -70,6 +75,17 @@ import {createSlice} from "@reduxjs/toolkit"
             state.products.error=true
             state.msg = action.payload
         },
+        get1ProductStart:(state) =>{
+            state.one.isFetching= true
+        },
+        get1ProductSuccess: (state,action) =>{
+            state.one.isFetching=false;
+            state.one.product=action.payload;
+        },
+        get1ProductFalse: (state) =>{
+            state.one.isFetching=false
+            state.one.error=true
+        },
 
     },
 })
@@ -87,6 +103,9 @@ export const {
     createStart,
     createSuccess,
     createFalse,
+    get1ProductStart,
+    get1ProductSuccess,
+    get1ProductFalse,
 } = productSlice.actions
 
 export default productSlice.reducer

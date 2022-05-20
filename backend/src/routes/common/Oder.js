@@ -29,5 +29,7 @@ router.post("/new", verifyTokenAndUserAuthorization, oderController.newOder);
 
 router.get("/getFull/:id", oderController.getFullOder);
 
+router.get("/getLength",oderController.getOderLength)
+
 
 module.exports = router;

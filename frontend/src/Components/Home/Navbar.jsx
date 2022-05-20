@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import { Link } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCartShopping
+} from "@fortawesome/free-solid-svg-icons";
 import {
   Nav,
   NavDropdown,
@@ -11,7 +15,9 @@ import {
   FormControl,
   Container,
 } from "react-bootstrap";
-
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../../redux/apiRequest";
 const Button = styled.button`
   padding: 10px 25px;
   font-size: 15px;
@@ -30,7 +36,16 @@ const Button = styled.button`
 `;
 
 const Navbar1 = () => {
+  const user = useSelector((state)=> state.auth.login.currentUser)
+  const accessToken = user?.accessToken;
+  const id = user?._id;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () =>{
+    logOut(dispatch,id,navigate, accessToken);
+  }
   return (
+    // {`ROLE: ${user?.role === "2" ? "seller" : "customer"}`}
     <div style={{ position: "fixed", zIndex: "5", width: "100%" }}>
       <Navbar
         bg="light"
@@ -38,7 +53,7 @@ const Navbar1 = () => {
         style={{ height: "80px", padding: "0 150px" }}
       >
         <Container fluid>
-          <Navbar.Brand href="#">
+          <Navbar.Brand href="/">
             <img
               src="https://htpshop.vn/public/userfiles/logo/htp-shop.webp"
               style={{ height: "50px" }}
@@ -51,29 +66,49 @@ const Navbar1 = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <NavDropdown
-                title="LOGIN"
+              
+              {user ?
+
+                <NavDropdown
+                title= {`Hi, ${user?.fullname}`}
                 id="navbarScrollingDropdown"
                 style={{ margin: "30px", fontWeight: "bold" }}
-              >
+                >
                 <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-              </NavDropdown>
+                <Link to="/logout" onClick={handleLogout} style={{ textDecoration: "none" }}>
+                <NavDropdown.Item >Logout</NavDropdown.Item>
+                </Link>
+                </NavDropdown>
+           :
+            <NavDropdown
+            title="LOGIN"
+            id="navbarScrollingDropdown"
+            style={{ margin: "30px", fontWeight: "bold" }}
+          >
+            <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+          </NavDropdown>
+              }
+              
+            
               <NavDropdown
                 title="CATEROGY"
                 id="navbarScrollingDropdown"
                 style={{ margin: "30px", fontWeight: "bold" }}
               >
-                <NavDropdown.Item href="/Category1">Xe số</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-so">Xe số</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/Category2">Xe tay ga</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-tay-ga">Xe tay ga</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/Category3">Xe côn tay</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-con-tay">Xe côn tay</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/Category4">Xe mô tô</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-mo-to">Xe mô tô</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown
                 title="PAGES"
@@ -97,6 +132,7 @@ const Navbar1 = () => {
                 <NavDropdown.Item href="/">Terms & Conditions</NavDropdown.Item>
               </NavDropdown>
             </Nav>
+            
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -106,6 +142,11 @@ const Navbar1 = () => {
               />
               <Button>Search</Button>
             </Form>
+            <a href='/cart' style={{textDecoration: "none", fontSize:"20px"}}>
+            <FontAwesomeIcon
+              icon={faCartShopping}
+              style={{ marginLeft: "30px" ,width:'30px',height:'30px'}}
+            />Cart</a>
           </Navbar.Collapse>
         </Container>
       </Navbar>

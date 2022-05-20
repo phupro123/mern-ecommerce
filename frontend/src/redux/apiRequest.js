@@ -21,7 +21,7 @@ export const loginUser = async(user,dispatch,navigate) =>{
         {
             navigate('/admin')
         }
-        
+      
        
             
     }catch(err){
@@ -42,6 +42,7 @@ export const registerUser = async(user,dispatch,navigate) =>{
        
            
    }catch(err){
+       console.log(err)
        dispatch(registerFalse())
    }
 }
@@ -119,9 +120,21 @@ export const deleteUser = async(accessToken,dispatch,id) =>{
         headers: { token: `Bearer ${accessToken}` },
       });
       dispatch(logOutSuccess());
-      navigate("/login");
+      navigate('/')
     } catch (err) {
       dispatch(logOutFailed());
     }
 }
+
+// export const getLengthUser = async() =>{
+    
+//     try{
+        
+//        const  res= await axios.get("/user/getLength")
+//          return res.data
+     
+//     }catch(err){
+//       return err
+//     }
+//  }
 

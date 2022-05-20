@@ -98,7 +98,7 @@ export const productColumns = [
   {
     field: "product",
     headerName: "Product",
-    width: 215  ,
+    width: 250 ,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
@@ -126,12 +126,12 @@ export const productColumns = [
   {
     field: "category",
     headerName: "Category",
-    width: 140,
+    width: 120,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
          
-          {params.row.category_id}
+          {params.row.category_id.name}
         </div>
       );
     },
@@ -142,8 +142,8 @@ export const productColumns = [
     width: 100,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.role}`}>
-          {params.row.brand_id}
+        <div className={`cellWithStatus `}>
+          {params.row.brand_id.name}
         </div>
       );
     },
@@ -151,7 +151,7 @@ export const productColumns = [
   {
     field: "amount",
     headerName: "Amount",
-    width: 100,
+    width: 80,
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus `}>
@@ -163,12 +163,12 @@ export const productColumns = [
   {
     field: "seller",
     headerName: "Seller",
-    width: 100,
+    width: 200,
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
          
-          {params.row.seller_id}
+          {params.row.seller_id.fullname}
         </div>
       );
     },

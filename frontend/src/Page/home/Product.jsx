@@ -6,11 +6,12 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../../Components/Home/Footer";
 import Navbar from "../../Components/Home/Navbar";
 import Newsletter from "../../Components/Home/Newsletter";
+import IncDecCounter from "../../Components/Home/IncDecCounter";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { get1Product } from "../../redux/apiProduct";
+import { get1Product, get1ProductBySlug } from "../../redux/apiProduct";
 
 const Container = styled.div``;
 
@@ -52,37 +53,24 @@ const Price = styled.span`
 
 const AddContainer = styled.div`
   width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const AmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-`;
-
-const Amount = styled.span`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 5px;
 `;
 
 const Button = styled.button`
-  padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
-  cursor: pointer;
+  padding: 10px 25px;
+  font-size: 15px;
   font-weight: 500;
-  &:hover {
-    background-color: #f8f4f4;
-  }
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    #00d2ff 0,
+    #1fa5ea 51%,
+    #3a7bd5 100%
+  );
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  margin-top: 20px;
 `;
 
 const Product = () => {
@@ -104,11 +92,11 @@ const Product = () => {
   // const [fullname,setFullname] = useState(selectedProduct.fullname);
   // const [role,setRole]= useState(selectedProduct.role);
 
-  const { id } = useParams();
-
+  const { slug } = useParams();
+    console.log(selectedProduct)
   //Load trang
   useEffect(() => {
-    get1Product(user?.accessToken, dispatch, id);
+    get1ProductBySlug( dispatch, slug);
     // getAllUsers(user?.accessToken,dispatch)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -133,18 +121,14 @@ const Product = () => {
       <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src={selectedProduct?.image} />
+          <Image src={selectedProduct[0]?.image} />
         </ImgContainer>
         <InfoContainer>
-          <Title>{selectedProduct?.name}</Title>
-          <Desc>{selectedProduct?.description}</Desc>
-          <Price>{selectedProduct?.price}</Price>
+          <Title>{selectedProduct[0]?.name}</Title>
+          <Desc>{selectedProduct[0]?.description}</Desc>
+          <Price>{selectedProduct[0]?.price}</Price>
           <AddContainer>
-            <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
-            </AmountContainer>
+            <IncDecCounter />
             <Button>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>

@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import {  toast } from 'react-toastify';
 import { registerUser } from "../../redux/apiRequest";
-
+import axios from "axios";
+// import {  toast } from 'react-toastify';
+// import React from 'react';
+// import 'react-toastify/dist/ReactToastify.css';
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -77,6 +81,11 @@ const Agreement = styled.span`
   margin: 20px 0px;
   display: block;
 `;
+const notify = () => {
+  const type = 'success'
+  toast[type]("Success Notification !", {
+ 
+  });}
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -88,9 +97,30 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [userState,setUserState]=useState()
+  const getLength=async() => {
+    try{
+        
+      const  res= await axios.get("/user/getLength")
+      setUserState(res.data)
+    
+   }catch(err){
+     return err
+   }
+  }
+  useEffect(()=>{
+   
+    getLength()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]) 
+
   const handleLogin = (e) => {
     e.preventDefault();
+   ;
+    const id = userState+1
+    console.log(id)
     const newUser = {
+      _id:id,
       username: username,
       password: password,
       email,
@@ -98,8 +128,11 @@ const Register = () => {
       fullname,
       role,
     };
+    
     registerUser(newUser, dispatch, navigate);
+    
   };
+ 
 
   return (
     <Container>
@@ -144,9 +177,12 @@ const Register = () => {
             By creating an account, I consent to the processing of my personal
             data in accordance with the <br /> <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button type="submit">REGISTER</Button>
+          
+          <Button type="submit" onClick={notify} >REGISTER</Button>
+         
         </Form>
       </Wrapper>
+      
     </Container>
   );
 };

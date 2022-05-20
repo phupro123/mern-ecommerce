@@ -6,7 +6,14 @@ import Newsletter from "../../Components/Home/Newsletter";
 import CaterogyProducts1 from "../../Components/Home/CategoryProducts1";
 
 const Container = styled.div`
-  margin-top: 80px;
+  padding: 80px 150px 0;
+`;
+
+const Title = styled.h1`
+  margin-top: 10px;
+  font-size: 50px;
+  color: #3a7bd5;
+  font-weight: bold;
 `;
 
 const FilterContainer = styled.div`
@@ -35,6 +42,7 @@ const Caterogy1 = () => {
     <div>
       <Navbar />
       <Container>
+        <Title>Xe số</Title>
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>
@@ -48,16 +56,6 @@ const Caterogy1 = () => {
               <Option>Blue</Option>
               <Option>Yellow</Option>
               <Option>Green</Option>
-            </Select>
-            <Select>
-              <Option disabled selected>
-                Size
-              </Option>
-              <Option>XS</Option>
-              <Option>S</Option>
-              <Option>M</Option>
-              <Option>L</Option>
-              <Option>XL</Option>
             </Select>
           </Filter>
           <Filter>

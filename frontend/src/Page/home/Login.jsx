@@ -5,6 +5,7 @@ import {} from "react-bootstrap";
 
 import { useState } from "react";
 import { direct, loginUser } from "../../redux/apiRequest";
+import { Link } from "@material-ui/core";
 
 const Container = styled.div`
   width: 100vw;
@@ -86,6 +87,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -94,6 +96,7 @@ const Login = () => {
       password: password,
     };
     loginUser(newUser, dispatch, navigate);
+    
   };
 
   return (
@@ -112,8 +115,11 @@ const Login = () => {
           />
           <ContainerButton>
             <Button type="submit">LOGIN</Button>
-            <Button type="submit">REGISTER</Button>
+            
+          
+          
           </ContainerButton>
+          <Url href="/register">CREATE A NEW ACCOUNT</Url>
           <Url>Do you not you remember the password</Url>
         </Form>
       </Wrapper>
