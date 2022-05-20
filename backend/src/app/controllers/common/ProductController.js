@@ -8,6 +8,9 @@ class ProductController {
     async getAllProduct(req,res,next){
        
         Product.find({})
+            .populate('category_id')
+            .populate('seller_id')
+            .populate('brand_id')
             .then(product =>{
                 res.status(200).json(product);
                     
@@ -28,13 +31,30 @@ class ProductController {
            return res.status(500).json(err);
           }
         }
+
      // [GET] /product/get/:id
     async getProduct(req,res,next){
         await Product.findById(req.params.id)
+        .populate('category_id')
+            .populate('seller_id')
+            .populate('brand_id')
         .then(product =>{
             res.status(200).json(product) 
         })
         .catch(next)
+        
+        
+    }
+
+    async getProductBySlug(req,res,next){
+        await Product.find({slug:req.params.slug})
+            .populate('category_id')
+            .populate('seller_id')
+            .populate('brand_id')
+            .then(product =>{
+                res.status(200).json(product) 
+            })
+            .catch(next)
         
         
     }
@@ -85,8 +105,8 @@ class ProductController {
 
     async getCategory1(req,res,next){
        
-        Product.find({category_id:"Xe số"})
-          
+        Product.find({category_id:req.params.id})
+      
             .then(product =>{
                 res.status(200).json(product);
                     
@@ -98,51 +118,12 @@ class ProductController {
         // res.send('detail'+req.params.slug)    
     }
 
-    async getCategory2(req,res,next){
-       
-        Product.find({category_id:"Xe tay ga"})
-          
-            .then(product =>{
-                res.status(200).json(product);
-                    
-            })
-            .catch(()=>{
-                res.status(500).json(err);
-            })
-        
-        // res.send('detail'+req.params.slug)    
-    }
-    async getCategory3(req,res,next){
-       
-        Product.find({category_id:"Xe côn tay"})
-          
-            .then(product =>{
-                res.status(200).json(product);
-                    
-            })
-            .catch(()=>{
-                res.status(500).json(err);
-            })
-        
-        // res.send('detail'+req.params.slug)    
-    }
-    async getCategory4(req,res,next){
-       
-        Product.find({category_id:"Xe mô tô"})
-          
-            .then(product =>{
-                res.status(200).json(product);
-                    
-            })
-            .catch(()=>{
-                res.status(500).json(err);
-            })
-        
-        // res.send('detail'+req.params.slug)    
-    }
     async getProductBySeller(req,res,next){
        
         Product.find({seller_id:req.params.id})
+        .populate('category_id')
+            .populate('seller_id')
+            .populate('brand_id')
             .then(product =>{
                 res.status(200).json(product);
                     
@@ -152,6 +133,23 @@ class ProductController {
             })
         
         // res.send('detail'+req.params.slug)    
+    }
+
+    async getProductLength(req,res){
+        await Product.find().count()
+            .then((user)=> res.status(200).json(user))
+            .catch((err) =>{
+                return res.status(500).json(err);
+            })
+    }
+
+    async search(req,res){
+        await Product.find({ name: {$regex: req.query.q } })
+
+            .then((user)=> res.status(200).json(user))
+            .catch((err) =>{
+                return res.status(500).json(err);
+            })
     }
 
 }

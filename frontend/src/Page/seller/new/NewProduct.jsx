@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams,  } from "react-router-dom";
 
 import { createProduct, editProduct, get1Product } from "../../../redux/apiProduct";
+import axios from "axios";
 
 const New = ({  title,action }) => {
   const dispatch= useDispatch();
@@ -22,19 +23,30 @@ const New = ({  title,action }) => {
   const [category_id,setCategory]= useState(selectedUser?.category_id);
   const [brand_id,setBrand]= useState(selectedUser?.brand_id);
   const [amount,setAmount] = useState(selectedUser?.amount);
-  const [seller_id,setSeller]=useState(selectedUser?.seller_id);  
+  const [description,setDescription]=useState(selectedUser?.description);  
   const [status,setStatus]=useState(selectedUser?.status);  
-  
+  const [productState,setProductState]=useState()
   const {productid}= useParams()
-  
+  const getLengthProduct=async() =>{
+    
+    try{
+        
+        const res= await axios.get("/product/getLength")
+        setProductState(res.data)
+         
+    }catch(err){
+      return err
+    }
+  }
   
   //Load trang
   useEffect(()=>{
   
     if(user?.accessToken){
       get1Product(user?.accessToken,dispatch,productid)
-     
+      getLengthProduct()
     }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]) 
 
@@ -42,7 +54,7 @@ const New = ({  title,action }) => {
     e.preventDefault()
     
     const newProduct = {
-      _id:'98',
+      _id:productState+1,
       name,
       price,
       category_id,
@@ -50,7 +62,7 @@ const New = ({  title,action }) => {
       brand_id,
       seller_id: user._id,
       status,
-      description:"Xe mới",
+      description,
      
     }
     createProduct(newProduct,dispatch,navigate,productid,user?.accessToken)
@@ -103,29 +115,30 @@ const New = ({  title,action }) => {
                   <input type='text'placeholder={selectedUser?.amount} onChange={(e)=>setAmount(e.target.value)}/>
                 </div>
            
+            
+              
                 <div className="formInput" >
-                  <label>Category</label>
-                  <input type='text' placeholder={selectedUser?.category_id} onChange={(e)=>setCategory(e.target.value)} />
-                </div>
-           
-                <div className="formInput" >
-                  <label>Seller</label>
-                  <input type='text' value={user._id}  />
+                  <label>Description</label>
+                  <input type='text'  onChange={(e)=>setDescription(e.target.value)} />
                 </div>
            
                 <div className="formInput" >
                   <label>Brand</label>
                   <input type='text' placeholder={selectedUser?.brand_id}  onChange={(e)=>setBrand(e.target.value)}/>
                 </div>
-                <div className="formInput" >
-                  <label>Status</label>
-                  <input type='text' placeholder={selectedUser?.status}  onChange={(e)=>setStatus(e.target.value)}/>
-                </div>
                 
-                {/* <select className="table-group-action-input form-control"  > 
-                <option value="3" >Customer</option>
-                <option value="2" >Seller</option>
-              </select> */}
+                <select className="table-group-action-input form-control" placeholder={selectedUser?.category_id} onChange={(e)=>setCategory(e.target.value)} > 
+                <option value="1" >Xe số</option>
+                <option value="2" >Xe tay ga</option>
+                <option value="3" >Xe côn tay</option>
+                <option value="4" >Xe mô tô</option>
+              </select>
+           
+                
+                <select className="table-group-action-input form-control" onChange={(e)=>setStatus(e.target.value)} > 
+                <option value="Published" >Published</option>
+                <option value="Unpublished" >Unpublished</option>
+              </select>
            
               <button type='submit'>Send</button>
             </form>

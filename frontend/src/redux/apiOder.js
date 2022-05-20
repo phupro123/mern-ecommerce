@@ -11,7 +11,7 @@ export const createOder = async(oder,dispatch,navigate) =>{
     dispatch(createStart())
    try{
        
-       const res= await axios.post("/login/create",oder)
+       const res= await axios.post("/oder/new",oder)
        dispatch(createSuccess(res.data))
         navigate('/login')
        
@@ -131,5 +131,18 @@ export const deleteOder = async(accessToken,dispatch,id) =>{
    }
 
 }
+
+// export const getLengthOder = async() =>{
+    
+//     try{
+        
+//         const res= await axios.get("/oder/getLength")
+//         return res
+
+//     }catch(err){
+//       return err
+//     }
+//  }
+
 
 

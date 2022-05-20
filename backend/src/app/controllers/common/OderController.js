@@ -123,6 +123,15 @@ class OderController {
         
         // res.send('detail'+req.params.slug)    
     }
+
+    async getOderLength(req,res){
+        await Oder.find().count()
+            .then((user)=> res.status(200).json(user))
+            .catch((err) =>{
+                return res.status(500).json(err);
+            })
+    }
+
 }
 
 module.exports = new  OderController();

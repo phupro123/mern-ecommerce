@@ -59,6 +59,15 @@ class OderDetailController {
             })
         
     }
+
+    async getOderDetailLength(req,res){
+        await OderDetail.find().count()
+            .then((user)=> res.status(200).json(user))
+            .catch((err) =>{
+                return res.status(500).json(err);
+            })
+    }
+
 }
 
 module.exports = new  OderDetailController();

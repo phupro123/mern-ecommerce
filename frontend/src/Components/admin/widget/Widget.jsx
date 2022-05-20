@@ -5,6 +5,9 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
+import {  useState } from "react";
+import axios from "axios";
+
 const Widget = ({ type }) => {
   let data;
 
@@ -12,8 +15,54 @@ const Widget = ({ type }) => {
   const amount = 100;
   const diff = 20;
 
+  const [userState,setUserState]=useState()
+  const getLength=async() => {
+    try{
+        
+      const  res= await axios.get("/user/getLength")
+      setUserState(res.data)
+    
+   }catch(err){
+     return err
+   }
+  }
+
+  const getLengthProduct=async() =>{
+    
+    try{
+        
+        const res= await axios.get("/product/getLength")
+        setUserState(res.data)
+         
+    }catch(err){
+      return err
+    }
+  }
+  const getLengthOder=async() =>{
+    
+    try{
+        
+        const res= await axios.get("/oder/getLength")
+        setUserState(res.data)
+
+    }catch(err){
+      return err
+    }
+ }
+ const getLenthOderDetail =async() =>{
+    
+  try{
+      
+       const res= await axios.get("/oderdetail/getLength")
+       setUserState(res.data)
+      
+  }catch(err){
+    return err
+  }
+}
   switch (type) {
     case "user":
+      getLength()
       data = {
         title: "USERS",
         isMoney: false,
@@ -27,9 +76,11 @@ const Widget = ({ type }) => {
             }}
           />
         ),
+        amount:{userState}
       };
       break;
     case "order":
+      getLengthOder()
       data = {
         title: "ORDERS",
         isMoney: false,
@@ -46,6 +97,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "earning":
+      getLengthProduct()
       data = {
         title: "EARNINGS",
         isMoney: true,
@@ -59,6 +111,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "balance":
+      getLenthOderDetail()
       data = {
         title: "BALANCE",
         isMoney: true,
@@ -83,7 +136,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {data.isMoney && "$"} {userState}
         </span>
         <span className="link">{data.link}</span>
       </div>

@@ -151,7 +151,11 @@ const Cart = () => {
       <Wrapper>
         <Title>YOUR BAG</Title>
         <Top>
+          <a href='/'>
+            
+          
           <TopButton>CONTINUE SHOPPING</TopButton>
+          </a>
           <TopTexts>
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>

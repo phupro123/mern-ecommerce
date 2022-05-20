@@ -43,8 +43,22 @@ class UserController {
      async update (req,res,next){
         await  User.updateOne({_id: req.params.id},req.body)
             .then(() => res.status(200).json('Updated Success'))
-            .catch(next)
+            .catch((err) =>{
+                return res.status(500).json(err);
+            })
         
+    }
+
+    async getUserLength(req,res){
+    
+        await User.find().count()
+            // await User.aggregate( [
+            //     { $count: 'username'  }
+            // ])
+            .then((user)=> res.status(200).json(user))
+            .catch((err) =>{
+                return res.status(500).json(err);
+            })
     }
 }
 

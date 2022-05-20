@@ -1,5 +1,5 @@
 
-import HomePage from "./Components/Home/HomePage";
+
 import {  Route, Routes} from "react-router-dom";
 import Login from "./Page/home/Login";
 import Register from "./Page/home/Register";
@@ -12,23 +12,18 @@ import Cart from "./Page/home/Cart";
 import Product from "./Page/home/Product";
 import ProductList from "./Page/home/ProductList";
 import Caterogy1 from "./Page/home/Caterogy1";
-import Caterogy2 from "./Page/home/Caterogy2";
-import Caterogy3 from "./Page/home/Caterogy3";
-import Caterogy4 from "./Page/home/Caterogy4";
+ 
 const Customer = () => {
   return (
     <Routes>
     <Route path="/" element={<Home />} />
-      <Route path="/test" element={<HomePage />} />
-      <Route path="/product/:id" element={<Product />} />
+      <Route path="/product/:slug" element={<Product />} />
       <Route path="/productlist" element={<ProductList />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/category1" element={<Caterogy1 />} />
-      <Route path="/category2" element={<Caterogy2 />} />
-      <Route path="/category3" element={<Caterogy3 />} />
-      <Route path="/category4" element={<Caterogy4 />} />
+      <Route path="/category/:id" element={<Caterogy1 />} />
+     
     </Routes>
   )
    

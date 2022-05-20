@@ -57,10 +57,26 @@ const CategoryProducts1 = () => {
   );
 
   const { id } = useParams();
-
+  let pid=0
+  if(id==='xe-so')
+  {
+    pid=1
+  }
+  else if(id==='xe-tay-ga')
+  {
+    pid=2
+  }
+  else if(id==='xe-con-tay')
+  {
+    pid=3
+  }
+  else if(id==='xe-mo-to')
+  {
+  pid=4
+  }
   //Load trang
   useEffect(() => {
-    getCategory1(dispatch);
+    getCategory1(dispatch,pid);
   }, []);
 
   const handleLogin = (e) => {
@@ -70,7 +86,7 @@ const CategoryProducts1 = () => {
     <Container>
       {productList?.map((product) => (
         <ContainerItem>
-          <Link to={`/product/${product?._id}`}>
+          <Link to={`/product/${product?.slug}`}>
             <Image src={product?.image} />
           </Link>
           <Name>{product?.name}</Name>

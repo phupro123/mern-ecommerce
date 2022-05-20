@@ -87,6 +87,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -95,6 +96,7 @@ const Login = () => {
       password: password,
     };
     loginUser(newUser, dispatch, navigate);
+    
   };
 
   return (

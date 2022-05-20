@@ -18,13 +18,12 @@ router.get("/getbyseller/:id", productController.getProductBySeller);
 
 router.get("/getTop5", productController.getTop5Product);
 
-router.get("/category/1", productController.getCategory1);
+router.get("/category/:id", productController.getCategory1);
 
-router.get("/category/2", productController.getCategory2);
-router.get("/category/3", productController.getCategory3);
-router.get("/category/4", productController.getCategory4);
 //DELETE USER
 router.delete("/delete/:id", verifyTokenAndSeller, productController.deleteProduct);
+
+router.get("/getbyslug/:slug", productController.getProductBySlug);
 
 router.get("/get/:id", productController.getProduct);
 
@@ -32,6 +31,9 @@ router.put("/edit/:id", verifyTokenAndSeller, productController.update);
 
 router.post("/new", productController.newProduct);
 
+router.get("/getLength",productController.getProductLength)
+
+router.get("/search",productController.search)
 
 
 module.exports = router;

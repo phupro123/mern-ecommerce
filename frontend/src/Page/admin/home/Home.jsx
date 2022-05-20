@@ -9,16 +9,26 @@ import { useNavigate } from "react-router-dom";
 import {  useSelector } from "react-redux";
 import { useEffect } from "react";
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const Home = () => {
   const navigate = useNavigate()
 
   const user = useSelector ((state) => state.auth.login?.currentUser)
  
-  const notify = () => toast("Wow so easy !");
+  const notify = () => {
+    
+    toast.success("Success Notification !", {
+   
+    });
+
+    toast.error("Error Notification !", {
+    
+    });
+
+  }
   useEffect(()=>{
     if(user.role !=='1'){
       navigate('/')

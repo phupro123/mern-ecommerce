@@ -49,50 +49,41 @@ export const getAllProduct = async(accessToken,dispatch) =>{
    }
 }
 
-export const getCategory1 = async(dispatch) =>{
+export const getCategory1 = async(dispatch,id) =>{
     dispatch(get1ProductStart())
    try{
        
-       const res= await axios.get("/product/category/1")
+       const res= await axios.get("/product/category/"+id)
        dispatch(get1ProductSuccess(res.data))
     
    }catch(err){
        dispatch(get1ProductFalse())
    }
 }
-export const getCategory2 = async(dispatch) =>{
-    dispatch(get1ProductStart())
-   try{
-       
-       const res= await axios.get("/product/category/2")
-       dispatch(get1ProductSuccess(res.data))
+
+// export const getLengthProduct = async() =>{
     
-   }catch(err){
-       dispatch(get1ProductFalse())
-   }
-}
-export const getCategory3 = async(dispatch) =>{
-    dispatch(get1ProductStart())
-   try{
+//    try{
        
-       const res= await axios.get("/product/category/3")
-       dispatch(get1ProductSuccess(res.data))
-    
-   }catch(err){
-       dispatch(get1ProductFalse())
-   }
-}
-export const getCategory4 = async(dispatch) =>{
-    dispatch(get1ProductStart())
-   try{
+//        const res= await axios.get("/product/getLength")
        
-       const res= await axios.get("/product/category/4")
-       dispatch(get1ProductSuccess(res.data))
+//         return res
+//    }catch(err){
+//      return err
+//    }
+// }
+
+export const getProductSearch = async(dispatch) =>{
     
-   }catch(err){
-       dispatch(get1ProductFalse())
-   }
-}
+    try{
+        
+        const res= await axios.get("/product/search")
+         return res
+    }catch(err){
+      return err
+    }
+ }
+
 
 export const getTop5Product = async(dispatch) =>{
     dispatch(get1ProductStart())
@@ -134,6 +125,17 @@ export const get1Product = async(accessToken,dispatch,id) =>{
    }
 }
 
+export const get1ProductBySlug = async(dispatch,slug) =>{
+    dispatch(getProductStart())
+   try{
+       
+       const res= await axios.get("/product/getbyslug/"+slug)
+       dispatch(getProductSuccess(res.data))
+           
+   }catch(err){
+       dispatch(getProductFalse())
+   }
+}
 
 
 export const deleteProduct = async(accessToken,dispatch,id) =>{
