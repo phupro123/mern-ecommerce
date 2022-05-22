@@ -47,7 +47,7 @@ class ProductController {
     }
 
     async getProductBySlug(req,res,next){
-        await Product.find({slug:req.params.slug})
+        await Product.findOne({slug:req.params.slug})
             .populate('category_id')
             .populate('seller_id')
             .populate('brand_id')

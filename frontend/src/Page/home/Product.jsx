@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { get1Product, get1ProductBySlug } from "../../redux/apiProduct";
+import { addToCart } from "../../redux/cart";
 
 const Container = styled.div``;
 
@@ -73,70 +74,63 @@ const Button = styled.button`
   margin-top: 20px;
 `;
 
-const Product = () => {
+
+const Product =  () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const user = useSelector((state) => state.auth.login?.currentUser);
+  const cart = useSelector((state) => state.cart.carts?.allCart);
+  const selectedProduct = useSelector( (state) => state.product.products?.allProduct  )
 
-  const selectedProduct = useSelector(
-    (state) => state.product.products?.allProduct
-  );
-
-  const [file, setFile] = useState(selectedProduct?.image);
-
-  // const [username,setUsername]= useState(selectedProduct.username);
-  // const [password,setPassword] = useState(selectedProduct.password);
-  // const [email,setEmail]= useState(selectedProduct.email);
-  // const [phone,setPhone]= useState(selectedProduct.phone);
-  // const [fullname,setFullname] = useState(selectedProduct.fullname);
-  // const [role,setRole]= useState(selectedProduct.role);
-
-  const { slug } = useParams();
-    console.log(selectedProduct)
-  //Load trang
+  const { slug } = useParams()
   useEffect(() => {
-    get1ProductBySlug( dispatch, slug);
-    // getAllUsers(user?.accessToken,dispatch)
+    get1ProductBySlug( dispatch, slug)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleCart = (e) => {
+    e.preventDefault()
 
-    // const newUser = {
-    //   username: username,
-    //   password: password,
-    //   email,
-    //   phone,
-    //   fullname,
-    //   role,
-    //   image: file,
-    // }
-    // editUser(newUser,dispatch,navigate,id,user?.accessToken)
+    const element = document.getElementById('amount')
+    const quantity = element?.value
+  
+    const newProduct= selectedProduct
+    let tempProduct = Object.assign({quantity}, newProduct);
+    let cartTemp = [...cart] 
+    
+     addToCart(tempProduct,cartTemp,dispatch,navigate)  
   };
+
   return (
+ 
     <Container>
       <Navbar />
-      <Wrapper>
+         <Wrapper>
         <ImgContainer>
-          <Image src={selectedProduct[0]?.image} />
+          <Image src={selectedProduct?.image} />
         </ImgContainer>
         <InfoContainer>
-          <Title>{selectedProduct[0]?.name}</Title>
-          <Desc>{selectedProduct[0]?.description}</Desc>
-          <Price>{selectedProduct[0]?.price}</Price>
+          <Title>{selectedProduct?.name}</Title>
+          <Desc>{selectedProduct?.description}</Desc>
+          <Price>{selectedProduct?.price}</Price>
           <AddContainer>
             <IncDecCounter />
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleCart}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
+     
+
+    
       <Newsletter />
       <Footer />
     </Container>
+   
   );
 };
+
 
 export default Product;
