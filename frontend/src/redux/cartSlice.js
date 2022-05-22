@@ -4,45 +4,33 @@ import {createSlice} from "@reduxjs/toolkit"
     name: "cart",
     initialState:{
         carts:{
-            allCart:null,
+            allCart: '',
             isFetching:false,
             error:false,
         },
         msg:"",
     },
     reducers:{
-        getCartStart:(state) =>{
+        addCartStart:(state) =>{
             state.carts.isFetching= true
         },
-        getCartSuccess: (state,action) =>{
+        addCartSuccess: (state,action) =>{
             state.carts.isFetching=false;
             state.carts.allCart=action.payload;
         },
-        getCartFalse: (state) =>{
+        addCartFalse: (state) =>{
             state.carts.isFetching=false
             state.carts.error=true
         },
+   
 
-        createStart:(state) =>{
-            state.create.isFetching= true
-        },
-        createSuccess: (state,action) =>{
-            state.create.isFetching=false;
-         
-            state.create.allCart=action.payload;
-        },
-        createFalse: (state) =>{
-            state.create.isFetching=false
-            state.create.error=true
-       
-        },
 
         deleteCartStart:(state) =>{
             state.carts.isFetching= true
         },
         deleteCartSuccess: (state,action) =>{
             state.carts.isFetching=false;
-            state.msg=action.payload;
+            state.carts.allCart=action.payload;
         },
         deleteCartFalse: (state,action) =>{
             state.carts.isFetching=false
@@ -54,15 +42,12 @@ import {createSlice} from "@reduxjs/toolkit"
 })
 
 export const {
-    getCartStart,
-    getCartFalse,
-    getCartSuccess,
     deleteCartStart,
     deleteCartSuccess,
     deleteCartFalse,
-    createStart,
-    createSuccess,
-    createFalse,
+    addCartStart,
+    addCartSuccess,
+    addCartFalse,
   
 } = cartSlice.actions
 
