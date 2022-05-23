@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 import Footer from "../../Components/Home/Footer";
@@ -14,141 +13,142 @@ import IncDecCounter from "../../Components/Home/IncDecCounter";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
-  padding: 20px;
+  padding: 100px 150px;
 `;
 
 const Title = styled.h1`
-  font-weight: 300;
+  font-weight: 600;
   text-align: center;
+  color: #1fa5ea;
 `;
 
 const Top = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px;
 `;
 
 const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
   cursor: pointer;
-  border: ${(props) => props.type === "filled" && "none"};
-  background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
-  color: ${(props) => props.type === "filled" && "white"};
+  border: 3px solid #3a7bd5;
+  background: #fff;
+  border-radius: 10px;
+  color: #3a7bd5;
+  transition: all 0.3s;
+  &:hover {
+    background: #3a7bd5;
+    color: #fff;
+  }
 `;
 
 const TopTexts = styled.div``;
 const TopText = styled.span`
-  text-decoration: underline;
   cursor: pointer;
   margin: 0px 10px;
+  font-weight: 550;
+  &:hover {
+    color: #3a7bd5;
+  }
 `;
 
-const Bottom = styled.div`
+const Bottom = styled.div``;
+
+const VinhKhang = styled.div`
   display: flex;
-  justify-content: space-between;
+  padding: 30px;
 `;
 
-const Info = styled.div`
+const Vinh = styled.div`
   flex: 3;
+  margin-right: 30px;
 `;
 
-const Product = styled.div`
-  display: flex;
-  justify-content: space-between;
+const Khang = styled.div`
+  flex: 1;
+`;
+
+const Info = styled.div``;
+
+const Product = styled.div``;
+
+const ProductHeader = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1.5fr;
+  align-items: center;
+  position: sticky;
+  top: 80px;
+  height: 30px;
+  background: #fff;
 `;
 
 const ProductDetail = styled.div`
-  flex: 2;
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1.5fr;
+  align-items: center;
 `;
 
 const Image = styled.img`
   width: 200px;
+  height: 160px;
+  cursor: pointer;
 `;
 
 const Details = styled.div`
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  text-align: center;
 `;
 
-const ProductName = styled.span``;
-
-const ProductId = styled.span``;
-
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`;
-
-const ProductSize = styled.span``;
-
-const PriceDetail = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-const ProductAmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-const ProductAmount = styled.div`
-  font-size: 24px;
-  margin: 5px;
-`;
-
-const ProductPrice = styled.div`
-  font-size: 30px;
-  font-weight: 200;
+const ProductName = styled.div`
+  color: #3a7bd5;
+  font-weight: 700;
+  font-size: 20px;
 `;
 
 const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
+  background-color: #3a7bd5;
 `;
 
-const Summary = styled.div`
-  flex: 1;
-  border: 0.5px solid lightgray;
+const CheckOut = styled.div`
   border-radius: 10px;
-  padding: 20px;
-  height: 50vh;
+  border: 2px solid #3a7bd5;
+  padding: 10px;
+  position: sticky;
+  top: 90px;
 `;
 
-const SummaryTitle = styled.h1`
-  font-weight: 200;
-`;
-
-const SummaryItem = styled.div`
-  margin: 30px 0px;
+const ContainerButton = styled.div`
   display: flex;
-  justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "500"};
-  font-size: ${(props) => props.type === "total" && "24px"};
+  justify-content: space-evenly;
+  margin: 20px 0;
 `;
-
-const SummaryItemText = styled.span``;
-
-const SummaryItemPrice = styled.span``;
 
 const Button = styled.button`
-  width: 100%;
-  padding: 10px;
-  background-color: black;
-  color: white;
+  padding: 10px 25px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    #00d2ff 0,
+    #1fa5ea 50%,
+    #3a7bd5 100%
+  );
+  border: 1px solid transparent;
+  text-transform: uppercase;
+`;
+
+const Text = styled.div`
+  margin: 15px 0px;
+  font-size: 16px;
   font-weight: 600;
+`;
+
+const FreeShip = styled.div`
+  margin: 10px 0px;
+  font-size: 12px;
+  color: #808089;
 `;
 
 const Cart = () => {
@@ -158,108 +158,97 @@ const Cart = () => {
   const user = useSelector((state) => state.auth.login?.currentUser);
   const cart = useSelector((state) => state.cart.carts?.allCart);
   //const length = cart.lenght()
-  const selectedProduct = useSelector((state) => state.product.products?.allProduct)
+  const selectedProduct = useSelector(
+    (state) => state.product.products?.allProduct
+  );
 
-
-
-  const { slug } = useParams()
+  const { slug } = useParams();
   useEffect(() => {
-    get1ProductBySlug(dispatch, slug)
-
+    get1ProductBySlug(dispatch, slug);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCart = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const element = document.getElementById('amount')
-    const quantity = element?.value
+    const element = document.getElementById("amount");
+    const quantity = element?.value;
 
-    const newProduct = selectedProduct
+    const newProduct = selectedProduct;
     let tempProduct = Object.assign({ quantity }, newProduct);
-    const cartTemp = [...cart]
+    const cartTemp = [...cart];
 
-    addToCart(tempProduct, cartTemp, dispatch, navigate)
+    addToCart(tempProduct, cartTemp, dispatch, navigate);
   };
-
-
-
-
   return (
     <Container>
       <Navbar />
       <Wrapper>
-        <Title>YOUR BAG</Title>
+        <Title>MY CART</Title>
         <Top>
-          <a href='/'>
-
-
+          <a href="/">
             <TopButton>CONTINUE SHOPPING</TopButton>
           </a>
           <TopTexts>
             <TopText>Shopping Bag ({cart.length})</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
         </Top>
-        {cart?.map((product) => (
-          <Bottom>
 
-
-
-            <Info>
-              <Product>
-                <ProductDetail>
-                  <Image src={product?.image} />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> {product?.name}
-                    </ProductName>
-                    <ProductId>
-                      <b>Category:</b> {product.brand_id?.name}
-                    </ProductId>
-                    <ProductSize>
-                      <b>Amount:</b> {product?.amount}
-                    </ProductSize>
-                    <ProductSize>
-                      <b>Prize:</b> {product?.price}
-                    </ProductSize>
-                  </Details>
-                </ProductDetail>
-                <PriceDetail>
-                  <ProductAmountContainer>
-
-                    <IncDecCounter />
-
-                  </ProductAmountContainer>
-                  <ProductPrice>$ 30</ProductPrice>
-                </PriceDetail>
-              </Product>
+        <VinhKhang>
+          <Vinh>
+            <ProductHeader className="fw-bold">
+              <Details></Details>
+              <Details>Product</Details>
+              <Details>Price</Details>
+              <Details>Quantity</Details>
+              <Details>Total amount</Details>
+            </ProductHeader>
+            {cart?.map((product) => (
+              <Bottom>
+                <Info>
+                  <Product>
+                    <ProductDetail>
+                      <Details className="text-center">
+                        <Image src={product?.image} />
+                      </Details>
+                      <Details>
+                        <ProductName>{product?.name}</ProductName>
+                        <Details>
+                          <b>Category:</b> {product.brand_id?.name}
+                        </Details>
+                      </Details>
+                      <Details>{product?.price}</Details>
+                      <Details className="px-3">
+                        <IncDecCounter />
+                      </Details>
+                      <Details className="text-danger">
+                        {product?.price}
+                      </Details>
+                    </ProductDetail>
+                  </Product>
+                  <Hr />
+                </Info>
+              </Bottom>
+            ))}
+          </Vinh>
+          <Khang>
+            <CheckOut>
+              <Text>Thành tiền:</Text>
               <Hr />
-            </Info>
-
-          </Bottom>
-        ))}
-        <Summary>
-          <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-          <SummaryItem>
-            <SummaryItemText>Subtotal</SummaryItemText>
-            <SummaryItemPrice>8 VNĐ</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem>
-            <SummaryItemText>Estimated Shipping</SummaryItemText>
-            <SummaryItemPrice>0 VNĐ</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem>
-            <SummaryItemText>Shipping Discount</SummaryItemText>
-            <SummaryItemPrice>0 VNĐ</SummaryItemPrice>
-          </SummaryItem>
-          <SummaryItem type="total">
-            <SummaryItemText>Total</SummaryItemText>
-            <SummaryItemPrice>8 VNĐ</SummaryItemPrice>
-          </SummaryItem>
-          <Button>CHECKOUT NOW</Button>
-        </Summary>
+              <Text>Tax:</Text>
+              <Hr />
+              <Text>Tổng tiền:</Text>
+              <Hr />
+              <FreeShip>* Miễn phí ship toàn quốc</FreeShip>
+              <ContainerButton>
+                <a href="/checkout">
+                  <Button type="submit">Check Out</Button>
+                </a>
+              </ContainerButton>
+            </CheckOut>
+          </Khang>
+        </VinhKhang>
       </Wrapper>
       <Footer />
     </Container>

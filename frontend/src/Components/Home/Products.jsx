@@ -42,11 +42,9 @@ const Image = styled.img`
 const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
- 
+
   const user = useSelector((state) => state.auth.login?.currentUser);
-  const productList = useSelector(
-    (state) => state.product.one?.product
-  );
+  const productList = useSelector((state) => state.product.one?.product);
 
   // const selectedProduct = useSelector(
   //   (state) => state.product.products?.allProduct
@@ -59,18 +57,14 @@ const Products = () => {
   //Load trang
   useEffect(() => {
     getTop5Product(dispatch);
-   
   }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
   };
   return (
-    
     <Container>
-     
-   
-       {productList?.map((product) => (
+      {productList?.map((product) => (
         <ContainerItem>
           <Link to={`/product/${product?.slug}`}>
             <Image src={product?.image} />
@@ -79,8 +73,6 @@ const Products = () => {
           <Price>{product?.price}</Price>
         </ContainerItem>
       ))}
-  
-     
     </Container>
   );
 };

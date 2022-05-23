@@ -28,7 +28,7 @@ function IncDecCounter() {
             </button>
           </div>
           <input
-            id='amount'
+            id="amount"
             type="text"
             class="form-control"
             value={num}
