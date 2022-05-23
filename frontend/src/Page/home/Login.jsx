@@ -87,7 +87,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -96,7 +95,6 @@ const Login = () => {
       password: password,
     };
     loginUser(newUser, dispatch, navigate);
-    
   };
 
   return (
@@ -115,9 +113,6 @@ const Login = () => {
           />
           <ContainerButton>
             <Button type="submit">LOGIN</Button>
-            
-          
-          
           </ContainerButton>
           <Url href="/register">CREATE A NEW ACCOUNT</Url>
           <Url>Do you not you remember the password</Url>

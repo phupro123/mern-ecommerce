@@ -4,9 +4,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartShopping
-} from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import {
   Nav,
   NavDropdown,
@@ -36,17 +34,17 @@ const Button = styled.button`
 `;
 
 const Navbar1 = () => {
-  const user = useSelector((state)=> state.auth.login.currentUser)
+  const user = useSelector((state) => state.auth.login.currentUser);
   const accessToken = user?.accessToken;
   const id = user?._id;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleLogout = () =>{
-    logOut(dispatch,id,navigate, accessToken);
-  }
+  const handleLogout = () => {
+    logOut(dispatch, id, navigate, accessToken);
+  };
   return (
     // {`ROLE: ${user?.role === "2" ? "seller" : "customer"}`}
-    <div style={{ position: "fixed", zIndex: "5", width: "100%" }}>
+    <div style={{ position: "fixed", zIndex: "10", width: "100%" }}>
       <Navbar
         bg="light"
         expand="lg"
@@ -66,49 +64,58 @@ const Navbar1 = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              
-              {user ?
-
+              {user ? (
                 <NavDropdown
-                title= {`Hi, ${user?.fullname}`}
-                id="navbarScrollingDropdown"
-                style={{ margin: "30px", fontWeight: "bold" }}
+                  title={`Hi, ${user?.fullname}`}
+                  id="navbarScrollingDropdown"
+                  style={{ margin: "30px", fontWeight: "bold" }}
                 >
-                <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <Link to="/logout" onClick={handleLogout} style={{ textDecoration: "none" }}>
-                <NavDropdown.Item >Logout</NavDropdown.Item>
-                </Link>
+                  <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <Link
+                    to="/logout"
+                    onClick={handleLogout}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <NavDropdown.Item>Logout</NavDropdown.Item>
+                  </Link>
                 </NavDropdown>
-           :
-            <NavDropdown
-            title="LOGIN"
-            id="navbarScrollingDropdown"
-            style={{ margin: "30px", fontWeight: "bold" }}
-          >
-            <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-          </NavDropdown>
-              }
-              
-            
+              ) : (
+                <NavDropdown
+                  title="LOGIN"
+                  id="navbarScrollingDropdown"
+                  style={{ margin: "30px", fontWeight: "bold" }}
+                >
+                  <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                </NavDropdown>
+              )}
+
               <NavDropdown
                 title="CATEROGY"
                 id="navbarScrollingDropdown"
                 style={{ margin: "30px", fontWeight: "bold" }}
               >
-                <NavDropdown.Item href="/category/xe-so">Xe số</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-so">
+                  Xe số
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/category/xe-tay-ga">Xe tay ga</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-tay-ga">
+                  Xe tay ga
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/category/xe-con-tay">Xe côn tay</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-con-tay">
+                  Xe côn tay
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/category/xe-mo-to">Xe mô tô</NavDropdown.Item>
+                <NavDropdown.Item href="/category/xe-mo-to">
+                  Xe mô tô
+                </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown
                 title="PAGES"
@@ -132,7 +139,7 @@ const Navbar1 = () => {
                 <NavDropdown.Item href="/">Terms & Conditions</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            
+
             <Form className="d-flex">
               <FormControl
                 type="search"
@@ -142,11 +149,16 @@ const Navbar1 = () => {
               />
               <Button>Search</Button>
             </Form>
-            <a href='/cart' style={{textDecoration: "none", fontSize:"20px"}}>
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              style={{ marginLeft: "30px" ,width:'30px',height:'30px'}}
-            />Cart</a>
+            <a
+              href="/cart"
+              style={{ textDecoration: "none", fontSize: "20px" }}
+            >
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                style={{ marginLeft: "30px", width: "30px", height: "30px" }}
+              />
+              Cart
+            </a>
           </Navbar.Collapse>
         </Container>
       </Navbar>
