@@ -148,7 +148,7 @@ const CheckOut = () => {
   let cartTemp = [...cart];
   useEffect(() => {
     if (user === null) {
-      navigate("/");
+      navigate("/login");
     }
     getLengthOder();
     getLenthOderDetail();

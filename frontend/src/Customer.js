@@ -12,7 +12,8 @@ import Product from "./Page/home/Product";
 import ProductList from "./Page/home/ProductList";
 import Caterogy1 from "./Page/home/Caterogy1";
 import MyOder from './Page/home/MyOder'
-import MyProfile from './Page/home/OderDetail'
+import OderDetail from './Page/home/OderDetail'
+import MyProfile from './Page/home/MyProfile'
 const Customer = () => {
   return (
     <Routes>
@@ -25,7 +26,8 @@ const Customer = () => {
       <Route path="/register" element={<Register />} />
       <Route path="/category/:id" element={<Caterogy1 />} />
       <Route path="/myorder/:id" element={<MyOder />} />
-      <Route path="/myorder/orderdetail/:id" element={<MyProfile />} />
+      <Route path="/myorder/orderdetail/:id" element={<OderDetail />} />
+      <Route path="/myprofile/:id" element={<MyProfile />} />
     </Routes>
   );
 };
