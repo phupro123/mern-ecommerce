@@ -9,9 +9,7 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 //import { useDispatch } from "react-redux";
 //import { useContext } from "react";
 
-
 const Navbar = () => {
-  
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -25,12 +23,9 @@ const Navbar = () => {
             English
           </div>
           <div className="item">
-            <DarkModeOutlinedIcon
-              className="icon"
-           
-            />
+            <DarkModeOutlinedIcon className="icon" />
           </div>
-         
+
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
           </div>
