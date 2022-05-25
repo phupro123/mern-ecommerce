@@ -5,9 +5,11 @@ import Navbar from "../../Components/Home/Navbar";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
-import {  removeFormCart } from "../../redux/cart";
+import { removeFormCart } from "../../redux/cart";
 import IncDecCounterCart from "../../Components/Home/IncDecCounterCart";
 
 const Container = styled.div``;
@@ -54,17 +56,17 @@ const TopText = styled.span`
 
 const Bottom = styled.div``;
 
-const VinhKhang = styled.div`
+const CartDetail = styled.div`
   display: flex;
   padding: 30px;
 `;
 
-const Vinh = styled.div`
+const CartProduct = styled.div`
   flex: 3;
   margin-right: 30px;
 `;
 
-const Khang = styled.div`
+const CartOrder = styled.div`
   flex: 1;
 `;
 
@@ -74,7 +76,7 @@ const Product = styled.div``;
 
 const ProductHeader = styled.div`
   display: grid;
-  grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1.5fr;
+  grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1.5fr 0.5fr;
   align-items: center;
   position: sticky;
   top: 80px;
@@ -84,7 +86,7 @@ const ProductHeader = styled.div`
 
 const ProductDetail = styled.div`
   display: grid;
-  grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1.5fr;
+  grid-template-columns: 2fr 2fr 1.5fr 1.5fr 1.5fr 0.5fr;
   align-items: center;
 `;
 
@@ -157,15 +159,13 @@ const Cart = () => {
 
   const user = useSelector((state) => state.auth.login?.currentUser);
   const cart = useSelector((state) => state.cart.carts?.allCart);
- 
-  const Sum = cart?.reduce( (total, currentValue) => {
-            return total + currentValue?.price*currentValue?.quantity
-            }, 0)
-  
 
-  const handleRemove = (id,e) => {
-   
-    removeFormCart(id,cart,dispatch)
+  const Sum = cart?.reduce((total, currentValue) => {
+    return total + currentValue?.price * currentValue?.quantity;
+  }, 0);
+
+  const handleRemove = (id, e) => {
+    removeFormCart(id, cart, dispatch);
   };
   return (
     <Container>
@@ -173,7 +173,7 @@ const Cart = () => {
       <Wrapper>
         <Title>MY CART</Title>
         <Top>
-          <a href="/">
+          <a href="/category/xe-so">
             <TopButton>CONTINUE SHOPPING</TopButton>
           </a>
           <TopTexts>
@@ -181,14 +181,15 @@ const Cart = () => {
           </TopTexts>
         </Top>
 
-        <VinhKhang>
-          <Vinh>
+        <CartDetail>
+          <CartProduct>
             <ProductHeader className="fw-bold">
               <Details></Details>
               <Details>Product</Details>
               <Details>Price</Details>
               <Details>Quantity</Details>
               <Details>Total amount</Details>
+              <Details></Details>
             </ProductHeader>
             {cart?.map((product) => (
               <Bottom>
@@ -206,26 +207,35 @@ const Cart = () => {
                       </Details>
                       <Details>{product?.price}</Details>
                       <Details className="px-3">
-                        <IncDecCounterCart product={product}/>
+                        <IncDecCounterCart product={product} />
                       </Details>
                       <Details className="text-danger">
                         {`${product?.price * product?.quantity}`}
                       </Details>
-                      <Button onClick={(e)=>handleRemove(product?._id,e)}>Remove</Button>
+                      <FontAwesomeIcon
+                        onClick={(e) => handleRemove(product?._id, e)}
+                        icon={faTrashCan}
+                        style={{
+                          color: "#3a7bd5",
+                          width: "24px",
+                          height: "24px",
+                          cursor: "pointer",
+                        }}
+                      />
                     </ProductDetail>
                   </Product>
                   <Hr />
                 </Info>
               </Bottom>
             ))}
-          </Vinh>
-          <Khang>
+          </CartProduct>
+          <CartOrder>
             <CheckOut>
-              <Text>Thành tiền:   {Sum}</Text>
+              <Text>Thành tiền: {Sum}</Text>
               <Hr />
               <Text>Giảm giá: </Text>
               <Hr />
-              <Text>Tổng tiền:    {Sum}</Text>
+              <Text>Tổng tiền: {Sum}</Text>
               <Hr />
               <FreeShip>* Miễn phí ship toàn quốc</FreeShip>
               <ContainerButton>
@@ -234,8 +244,8 @@ const Cart = () => {
                 </a>
               </ContainerButton>
             </CheckOut>
-          </Khang>
-        </VinhKhang>
+          </CartOrder>
+        </CartDetail>
       </Wrapper>
       <Footer />
     </Container>
