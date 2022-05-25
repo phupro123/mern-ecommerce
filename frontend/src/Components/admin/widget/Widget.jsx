@@ -8,11 +8,13 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import {  useState } from "react";
 import axios from "axios";
 
+
+
 const Widget = ({ type }) => {
   let data;
 
   //temporary
-  const amount = 100;
+  
   const diff = 20;
 
   const [userState,setUserState]=useState()
@@ -49,17 +51,22 @@ const Widget = ({ type }) => {
       return err
     }
  }
- const getLenthOderDetail =async() =>{
+ const getEarning=async() =>{
     
   try{
       
-       const res= await axios.get("/oderdetail/getLength")
-       setUserState(res.data)
-      
+    const res= await axios.get("/oderdetail/all")
+    const data = res.data
+    let plus = data?.reduce(function (total, currentValue) {
+      return total + currentValue.unit_price*currentValue.quantity
+      }, 0);
+    // console.log(plus)
+      setUserState(plus)
   }catch(err){
     return err
   }
 }
+
   switch (type) {
     case "user":
       getLength()
@@ -97,7 +104,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "earning":
-      getLengthProduct()
+      getEarning()
       data = {
         title: "EARNINGS",
         isMoney: true,
@@ -111,10 +118,10 @@ const Widget = ({ type }) => {
       };
       break;
     case "balance":
-      getLenthOderDetail()
+      getLengthProduct()
       data = {
-        title: "BALANCE",
-        isMoney: true,
+        title: "PRODUCTS",
+        isMoney: false,
         link: "See details",
         icon: (
           <AccountBalanceWalletOutlinedIcon
@@ -136,7 +143,7 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {userState}
+          {data.isMoney && "VNĐ"} {userState}
         </span>
         <span className="link">{data.link}</span>
       </div>

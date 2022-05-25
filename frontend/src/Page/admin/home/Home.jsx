@@ -18,17 +18,17 @@ const Home = () => {
 
   const user = useSelector ((state) => state.auth.login?.currentUser)
  
-  const notify = () => {
+  // const notify = () => {
     
-    toast.success("Success Notification !", {
+  //   toast.success("Success Notification !", {
    
-    });
+  //   });
 
-    toast.error("Error Notification !", {
+  //   toast.error("Error Notification !", {
     
-    });
+  //   });
 
-  }
+  // }
   useEffect(()=>{
     if(user===null || user?.role !=='1'){
       navigate('/')
@@ -38,7 +38,7 @@ const Home = () => {
       <Sidebar />
       <div className="homeContainer">
         <Navbar />
-        <button onClick={notify}>Notify !</button>
+        {/* <button onClick={notify}>Notify !</button> */}
         
         <div className="widgets">
           <Widget type="user" />

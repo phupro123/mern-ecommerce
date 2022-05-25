@@ -165,7 +165,7 @@ const Cart = () => {
   const selectedOder = useSelector((state) => state.oder.full?.detail)
   const {id} = useParams()
 
-
+  const [status, setStatus] = useState(selectedOder[0]?.oder_id.status)
   const a=selectedOder
   let plus = a?.reduce(function (total, currentValue) {
   return total + currentValue.product_id.price*currentValue.quantity
@@ -180,6 +180,10 @@ const Cart = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]) 
+
+  const handleEdit = ()=>{
+    console.log('1')
+  }
   return (
     <Container>
       <Navbar />
@@ -198,7 +202,7 @@ const Cart = () => {
         <div className="top">
           <div className="left">
            
-            <h1 className="title">Information</h1>
+            <h1 className="title">Information Customer</h1>
             <div className="item">
               <img
                 src={selectedOder[0]?.oder_id.customer_id.image}
@@ -229,8 +233,8 @@ const Cart = () => {
             </div>
           </div>
           <div className="left">
-            <div className="editButton">Edit</div>
-            <h1 className="title">Information</h1>
+            <div className="editButton" onClick={handleEdit}>Edit</div>
+            <h1 className="title">Information Order </h1>
             <div className="item">
               <img
                 src={selectedOder?.image}
@@ -247,13 +251,23 @@ const Cart = () => {
                   <span className="itemKey">Date:</span>
                   <span className="itemValue">{selectedOder[0]?.oder_id.buy_date}</span>
                 </div>
-                <h1 className="itemTitle">Total grant: {plus}</h1>
+                <div className="detailItem">
+                  <span className="itemKey">Status:</span>
+                  <select className="a" onChange={(e)=>setStatus(e.target.value)} value ={status} > 
+                    <option value="1" >Chờ xác nhận</option>
+                    <option value="2" >Đang vận chuyển</option>
+                    <option value="3" >Giao hàng thành công</option>
+                    <option value="4" >Đã hủy</option>
+                  </select>
+                
+                </div>
+                <h1 className="itemTitle">Total: {plus} VNĐ</h1>
               </div>
             </div>
           </div>
         </div>
         <div className="bottom">
-        <h1 className="title">Last Transactions</h1>
+        <h1 className="title">Last</h1>
           <List/>
         </div>
       </div>

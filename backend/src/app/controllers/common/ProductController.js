@@ -91,7 +91,7 @@ class ProductController {
     async getTop5Product(req,res,next){
        
         Product.find({})
-            .limit(5)
+            .limit(4)
             .then(product =>{
                 res.status(200).json(product);
                     

@@ -23,7 +23,7 @@ router.delete("/delete/:id", verifyTokenAndUserAuthorization, oderController.del
 
 router.get("/get/:id", verifyTokenAndUserAuthorization, oderController.getOder);
 
-router.put("/edit/:id", verifyTokenAndUserAuthorization, oderController.update);
+router.put("/edit/:id", oderController.update);
 
 router.post("/new", oderController.newOder);
 

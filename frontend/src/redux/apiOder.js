@@ -21,14 +21,13 @@ export const createOder = async(oder,dispatch) =>{
    }
 }
 
-export const editOder = async(oder,dispatch,navigate,id,accessToken) =>{
+export const editOder = async(oder,dispatch,id,accessToken) =>{
     dispatch(editOderStart())
    try{
        
        const res= await axios.put("/oder/edit/"+id,oder,{
         headers: {token: `Bearer ${accessToken}`},})
        dispatch(editOderSuccess(res.data))
-        //navigate('/login')
        
            
    }catch(err){

@@ -14,14 +14,14 @@ const New = ({  title,action }) => {
 
   const [file, setFile] = useState(user?.image);
 
-  const [username,setUsername]=useState(user?.username);
+
   const [password,setPassword] = useState('');
   const [confirmPassword,setconfirmPassword] = useState('');
   const [currentPassword,setcurrentPassword] = useState('');
   const [email,setEmail]= useState(user?.email);
   const [phone,setPhone]= useState(user?.phone);
   const [fullname,setFullname] = useState(user?.fullname);
-  const [role,setRole]=useState(user?.role);  
+
   const {id}= useParams();
  
 
@@ -29,12 +29,10 @@ const New = ({  title,action }) => {
     e.preventDefault()
     
     const newUser = {
-      username: username,
       password: password,
       email,
       phone,
       fullname,
-      role,
     }
     editUser(newUser,dispatch,navigate,id,user?.accessToken)
   }
