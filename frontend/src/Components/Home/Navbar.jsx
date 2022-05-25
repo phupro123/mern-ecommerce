@@ -42,6 +42,8 @@ const Navbar1 = () => {
   const handleLogout = () => {
     logOut(dispatch, id, navigate, accessToken);
   };
+
+  const cart = useSelector((state) => state.cart.carts?.allCart);
   return (
     // {`ROLE: ${user?.role === "2" ? "seller" : "customer"}`}
     <div style={{ position: "fixed", zIndex: "10", width: "100%" }}>
@@ -70,9 +72,13 @@ const Navbar1 = () => {
                   id="navbarScrollingDropdown"
                   style={{ margin: "30px", fontWeight: "bold" }}
                 >
-                  <NavDropdown.Item href={`/myprofile/${user?.slug}`}>My Profile</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myprofile/${user?.slug}`}>
+                    My Profile
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href={`/myorder/${user?.slug}`}>My Orders</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myorder/${user?.slug}`}>
+                    My Orders
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <Link
                     to="/logout"
@@ -88,9 +94,13 @@ const Navbar1 = () => {
                   id="navbarScrollingDropdown"
                   style={{ margin: "30px", fontWeight: "bold" }}
                 >
-                  <NavDropdown.Item href={`/myprofile/${user?.slug}`}>My Profile</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myprofile/${user?.slug}`}>
+                    My Profile
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href={`/myorder/${user?.slug}`}>My Orders</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myorder/${user?.slug}`}>
+                    My Orders
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                 </NavDropdown>
@@ -151,13 +161,35 @@ const Navbar1 = () => {
             </Form>
             <a
               href="/cart"
-              style={{ textDecoration: "none", fontSize: "20px" }}
+              style={{
+                textDecoration: "none",
+                fontSize: "12px",
+                position: "relative",
+              }}
             >
               <FontAwesomeIcon
                 icon={faCartShopping}
                 style={{ marginLeft: "30px", width: "30px", height: "30px" }}
               />
               Cart
+              <span
+                style={{
+                  color: "#3a7bd5",
+                  background: "#fff",
+                  border: "1px solid #3a7bd5",
+                  fontWeight: "bold",
+                  height: "16px",
+                  right: "15px",
+                  top: "-2px",
+                  borderRadius: "50%",
+                  display: "inline-block",
+                  lineHeight: "16px",
+                  position: "absolute",
+                  padding: "0px 4px",
+                }}
+              >
+                {cart?.length}
+              </span>
             </a>
           </Navbar.Collapse>
         </Container>

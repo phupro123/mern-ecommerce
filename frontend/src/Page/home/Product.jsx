@@ -12,6 +12,8 @@ import IncDecCounter from "../../Components/Home/IncDecCounter";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { get1Product, get1ProductBySlug } from "../../redux/apiProduct";
 import { addToCart } from "../../redux/cart";
 
@@ -95,6 +97,7 @@ const Product = () => {
     let cartTemp = [...cart];
 
     addToCart(tempProduct, cartTemp, dispatch, navigate);
+    toast.success("Success Notification !", {});
   };
 
   return (
