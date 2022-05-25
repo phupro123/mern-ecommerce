@@ -5,7 +5,7 @@ import Navbar from "../../Components/Home/Navbar";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editUser, get1 } from "../../redux/apiRequest";
 import New from "../../Components/Home/New";
@@ -157,25 +157,19 @@ const Cart = () => {
 
   const user = useSelector((state) => state.auth.login?.currentUser);
 
-
-  useEffect(()=>{
-
-
-    if(user===null){
-        navigate('/login')
+  useEffect(() => {
+    if (user === null) {
+      navigate("/login");
     }
-    
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container>
       <Navbar />
       <Wrapper>
         <Title>MY PROFILE</Title>
-       
-          <New/>
-     
+        <New />
       </Wrapper>
       <Footer />
     </Container>
