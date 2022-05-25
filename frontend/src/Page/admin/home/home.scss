@@ -29,3 +29,59 @@
     }
   }
 }
+
+.widget .left .title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #3a7bd5 !important;
+  text-align: center;
+}
+
+.widget .left .counter {
+  text-align: center;
+}
+
+.widget .left .link {
+  display: none !important;
+}
+
+.title {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.widget .right {
+  display: none !important;
+}
+
+.widget {
+  justify-content: center !important;
+}
+
+.sidebar .top .logo {
+  color: #3a7bd5 !important;
+}
+
+.sidebar .center ul li .icon {
+  color: #3a7bd5 !important;
+}
+
+.datatable .datatableTitle .link {
+  padding: 10px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  border: 3px solid #3a7bd5 !important;
+  background: #fff !important;
+  border-radius: 10px !important;
+  color: #3a7bd5 !important;
+  transition: all 0.3s !important;
+  &:hover {
+    background: #3a7bd5 !important;
+    color: #fff !important;
+  }
+}
+
+.datatable .datatableTitle {
+  color: #3a7bd5 !important;
+  font-weight: bold !important;
+}
