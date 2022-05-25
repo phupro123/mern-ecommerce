@@ -165,7 +165,7 @@ const Cart = () => {
   const selectedOder = useSelector((state) => state.oder.full?.detail)
   const {id} = useParams()
 
-  const [status, setStatus] = useState(selectedOder[0]?.oder_id.status)
+  
   const a=selectedOder
   let plus = a?.reduce(function (total, currentValue) {
   return total + currentValue.product_id.price*currentValue.quantity
@@ -180,7 +180,7 @@ const Cart = () => {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]) 
-
+  const [status, setStatus] = useState(selectedOder[0]?.oder_id?.status)
   const handleEdit = ()=>{
     console.log('1')
   }

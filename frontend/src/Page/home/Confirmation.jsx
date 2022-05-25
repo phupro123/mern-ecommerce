@@ -82,42 +82,18 @@ const Url = styled.a`
 `;
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    const newUser = {
-      username: username,
-      password: password,
-    };
-    
-    loginUser(newUser, dispatch, navigate);
-  };
 
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form onSubmit={handleLogin}>
-          <Input
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-          <ContainerButton>
-            <Button type="submit">LOGIN</Button>
-          </ContainerButton>
-          <Url href="/register">CREATE A NEW ACCOUNT</Url>
-          <Url>Do you not you remember the password</Url>
-        </Form>
+        <Title>ACCOUNT CONFIRMATION</Title>
+        <h1>An email with your account confirmation link has been sent to your email</h1>
+        <h1>Please check your email and comeback to login</h1>
+
+            <Button ><a href="/login" >LOGIN</a></Button>
       </Wrapper>
     </Container>
   );

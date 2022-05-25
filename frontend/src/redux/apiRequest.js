@@ -8,20 +8,26 @@ export const loginUser = async(user,dispatch,navigate) =>{
     try{
        
         const res= await axios.post("/login",user)
-        dispatch(loginSuccess(res.data))
-        const role =res.data.role
-        if(role==='3'){
-            navigate('/')
+        const data =res.data
+        if(data.verify)
+            {dispatch(loginSuccess(res.data))
+            const role =res.data.role
+            if(role==='3'){
+                navigate('/')
+            }
+            else if(role==='2')
+            {
+            navigate('/seller')
+            }
+            else if(role ==='1')
+            {
+                navigate('/admin')
+            }
         }
-        else if(role==='2')
-       {
-           navigate('/seller')
+        else{
+            navigate('/confirm-email')
         }
-        else if(role ==='1')
-        {
-            navigate('/admin')
-        }
-      
+        
        
             
     }catch(err){
@@ -38,7 +44,7 @@ export const registerUser = async(user,dispatch,navigate) =>{
        
        const res= await axios.post("/login/register",user)
        dispatch(registerSuccess(res.data))
-        navigate('/login')
+        
        
            
    }catch(err){

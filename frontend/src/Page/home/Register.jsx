@@ -5,6 +5,7 @@ import styled from "styled-components";
 import {  toast } from 'react-toastify';
 import { registerUser } from "../../redux/apiRequest";
 import axios from "axios";
+import emailjs from '@emailjs/browser';
 // import {  toast } from 'react-toastify';
 // import React from 'react';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -129,8 +130,20 @@ const Register = () => {
       role,
     };
     
-    registerUser(newUser, dispatch, navigate);
-    
+   registerUser(newUser, dispatch, navigate);
+
+   const link= `http://localhost:3000/confirm-email/${id}`
+   const templateParams= {
+     email:email,
+     link:link,
+   }
+    emailjs.send('gmail', 'template_6raebna', templateParams ,'tw8k9azpbiT_vhsV4')
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+        console.log('FAILED...', error);
+    });
+    navigate('/confirm-email')
   };
  
 

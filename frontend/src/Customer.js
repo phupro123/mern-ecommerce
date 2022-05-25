@@ -14,6 +14,9 @@ import Caterogy1 from "./Page/home/Caterogy1";
 import MyOder from './Page/home/MyOder'
 import OderDetail from './Page/home/OderDetail'
 import MyProfile from './Page/home/MyProfile'
+import Confirmation from './Page/home/Confirmation'
+import ConfirmEmail from './Page/home/ConfirmEmail'
+
 const Customer = () => {
   return (
     <Routes>
@@ -28,6 +31,9 @@ const Customer = () => {
       <Route path="/myorder/:id" element={<MyOder />} />
       <Route path="/myorder/orderdetail/:id" element={<OderDetail />} />
       <Route path="/myprofile/:id" element={<MyProfile />} />
+      <Route path="/confirm-email" element={<Confirmation />} />
+      <Route path="/confirm-email/:id" element={<ConfirmEmail />} />
+
     </Routes>
   );
 };
