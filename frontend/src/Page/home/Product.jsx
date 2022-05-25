@@ -123,15 +123,15 @@ const Product = () => {
                 <tbody>
                   <tr>
                     <td>Loại xe</td>
-                    <td>{selectedProduct.category_id?.name}</td>
+                    <td>{selectedProduct?.category_id?.name}</td>
                   </tr>
                   <tr>
                     <td>Hãng</td>
-                    <td>{selectedProduct.brand_id?.name}</td>
+                    <td>{selectedProduct?.brand_id?.name}</td>
                   </tr>
                   <tr>
                     <td>Cửa hàng</td>
-                    <td>{selectedProduct.seller_id?.fullname}</td>
+                    <td>{selectedProduct?.seller_id?.fullname}</td>
                   </tr>
                 </tbody>
               </Table>

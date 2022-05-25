@@ -61,6 +61,7 @@ class OderController {
             .then(() => res.status(200).json(newOder))
             .catch(error => {
                 res.status(500).json(error)
+                console.log(error)
             })
         
     }
@@ -89,6 +90,7 @@ class OderController {
         })
         .catch(error => {
             res.status(500).json(error)
+            console.log(error)
         })
     
     }
@@ -97,6 +99,9 @@ class OderController {
        
         Oder.find({customer_id:req.params.id})
            // .populate('seller_id')
+           .populate('customer_id')
+           .populate('pay_id')
+           .populate('status')
             .then(oder =>{
                 res.status(200).json(oder);
                     
@@ -113,6 +118,9 @@ class OderController {
        
         Oder.find({seller_id:req.params.id})
            // .populate('seller_id')
+           .populate('customer_id')
+           .populate('pay_id')
+           .populate('status')
             .then(oder =>{
                 res.status(200).json(oder);
                     

@@ -30,7 +30,7 @@ const Home = () => {
 
   }
   useEffect(()=>{
-    if(user.role !=='1'){
+    if(user===null || user?.role !=='1'){
       navigate('/')
     }})
   return (

@@ -14,10 +14,10 @@ const Oder = new Schema({
     seller_id: { type: String, ref: User },
   
     phone: { type: String,  },
-    adress: { type: String, },
+    address: { type: String, },
     receiver: {type:String},
     pay_id: { type: String, ref:Payment},
-    status: {type:String, ref:Status},
+    status: {type:String, ref:Status ,default:'1'},
 },{ _id: false,
     timestamps: true
 });

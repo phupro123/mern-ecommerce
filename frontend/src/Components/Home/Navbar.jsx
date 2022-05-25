@@ -70,9 +70,9 @@ const Navbar1 = () => {
                   id="navbarScrollingDropdown"
                   style={{ margin: "30px", fontWeight: "bold" }}
                 >
-                  <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myprofile/${user?.slug}`}>My Profile</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myorder/${user?.slug}`}>My Orders</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <Link
                     to="/logout"
@@ -88,9 +88,9 @@ const Navbar1 = () => {
                   id="navbarScrollingDropdown"
                   style={{ margin: "30px", fontWeight: "bold" }}
                 >
-                  <NavDropdown.Item href="/">My Profile</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myprofile/${user?.slug}`}>My Profile</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/">My Orders</NavDropdown.Item>
+                  <NavDropdown.Item href={`/myorder/${user?.slug}`}>My Orders</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                 </NavDropdown>

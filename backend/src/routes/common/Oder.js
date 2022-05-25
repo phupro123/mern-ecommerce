@@ -11,7 +11,7 @@ const  {
 
 //local/oder/all
 //GET ALL USERS
-router.get("/getseller/:id",verifyTokenAndUserAuthorization, oderController.getAllOderByIdSeller);
+router.get("/getseller/:id",verifyTokenAndSeller, oderController.getAllOderByIdSeller);
 
 router.get("/getbyid/:id",verifyTokenAndUserAuthorization, oderController.getAllOderById);
 
@@ -25,7 +25,7 @@ router.get("/get/:id", verifyTokenAndUserAuthorization, oderController.getOder);
 
 router.put("/edit/:id", verifyTokenAndUserAuthorization, oderController.update);
 
-router.post("/new", verifyTokenAndUserAuthorization, oderController.newOder);
+router.post("/new", oderController.newOder);
 
 router.get("/getFull/:id", oderController.getFullOder);
 

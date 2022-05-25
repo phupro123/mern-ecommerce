@@ -4,7 +4,7 @@ import {createSlice} from "@reduxjs/toolkit"
     name: "cart",
     initialState:{
         carts:{
-            allCart: '',
+            allCart: [],
             isFetching:false,
             error:false,
         },

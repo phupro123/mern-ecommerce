@@ -9,6 +9,7 @@ import { useNavigate} from "react-router-dom";
 
 import {  removeFormCart } from "../../redux/cart";
 import IncDecCounterCart from "../../Components/Home/IncDecCounterCart";
+import Datatable from "../../Components/Home/DatatableOder";
 
 const Container = styled.div``;
 
@@ -163,79 +164,26 @@ const Cart = () => {
             }, 0)
   
 
-  const handleRemove = (id,e) => {
-   
-    removeFormCart(id,cart,dispatch)
-  };
+  useEffect(()=>{
+
+
+    if(user===null){
+        navigate('/login')
+    }
+    
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   return (
     <Container>
       <Navbar />
       <Wrapper>
-        <Title>MY CART</Title>
-        <Top>
-          <a href="/">
-            <TopButton>CONTINUE SHOPPING</TopButton>
-          </a>
-          <TopTexts>
-            <TopText>Shopping Bag ({cart?.length})</TopText>
-          </TopTexts>
-        </Top>
+        <Title>MY ORDERS</Title>
+       
 
-        <VinhKhang>
-          <Vinh>
-            <ProductHeader className="fw-bold">
-              <Details></Details>
-              <Details>Product</Details>
-              <Details>Price</Details>
-              <Details>Quantity</Details>
-              <Details>Total amount</Details>
-            </ProductHeader>
-            {cart?.map((product) => (
-              <Bottom>
-                <Info>
-                  <Product>
-                    <ProductDetail>
-                      <Details className="text-center">
-                        <Image src={product?.image} />
-                      </Details>
-                      <Details>
-                        <ProductName>{product?.name}</ProductName>
-                        <Details>
-                          <b>Category:</b> {product?.brand_id?.name}
-                        </Details>
-                      </Details>
-                      <Details>{product?.price}</Details>
-                      <Details className="px-3">
-                        <IncDecCounterCart product={product}/>
-                      </Details>
-                      <Details className="text-danger">
-                        {`${product?.price * product?.quantity}`}
-                      </Details>
-                      <Button onClick={(e)=>handleRemove(product?._id,e)}>Remove</Button>
-                    </ProductDetail>
-                  </Product>
-                  <Hr />
-                </Info>
-              </Bottom>
-            ))}
-          </Vinh>
-          <Khang>
-            <CheckOut>
-              <Text>Thành tiền:   {Sum}</Text>
-              <Hr />
-              <Text>Giảm giá: </Text>
-              <Hr />
-              <Text>Tổng tiền:    {Sum}</Text>
-              <Hr />
-              <FreeShip>* Miễn phí ship toàn quốc</FreeShip>
-              <ContainerButton>
-                <a href="/checkout">
-                  <Button type="submit">Check Out</Button>
-                </a>
-              </ContainerButton>
-            </CheckOut>
-          </Khang>
-        </VinhKhang>
+     
+          <Datatable/>
+     
       </Wrapper>
       <Footer />
     </Container>

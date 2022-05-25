@@ -48,8 +48,6 @@ class OderDetailController {
       async newOder  (req, res, next){
         const formData= req.body
         
-    
-
         const newOder = new OderDetail(formData)
 
         newOder.save()

@@ -7,13 +7,13 @@ import { createFalse, createStart, createSuccess,deleteOderFalse, deleteOderStar
 
 
 
-export const createOder = async(oder,dispatch,navigate) =>{
+export const createOder = async(oder,dispatch) =>{
     dispatch(createStart())
    try{
        
        const res= await axios.post("/oder/new",oder)
        dispatch(createSuccess(res.data))
-        navigate('/login')
+    
        
            
    }catch(err){
@@ -86,7 +86,7 @@ export const getByCustomer = async(accessToken,dispatch,id) =>{
     dispatch(getOderStart())
    try{
        
-       const res= await axios.get("/oder/getyid/"+id,{
+       const res= await axios.get("/oder/getbyid/"+id,{
            headers: {token: `Bearer ${accessToken}`},
        })
        dispatch(getOderSuccess(res.data))
