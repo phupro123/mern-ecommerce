@@ -8,8 +8,7 @@ const User = new Schema({
     username: { 
         type: String, 
         required: true,
-      
-        minlength:3,
+ 
         unique: true,
 
     },
@@ -50,6 +49,10 @@ const User = new Schema({
         type:String, 
         slug:'username',
         unique: true},
+    verify:{
+        type:Boolean,
+        default:false,
+    }    
     },
     {_id: false,
     timestamps: true

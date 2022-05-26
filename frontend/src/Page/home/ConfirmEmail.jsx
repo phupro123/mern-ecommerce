@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {} from "react-bootstrap";
 
-import { useState } from "react";
-import { direct, loginUser } from "../../redux/apiRequest";
+import { useEffect, useState } from "react";
+import { direct, editUser, loginUser } from "../../redux/apiRequest";
 import { Link } from "@material-ui/core";
 
 const Container = styled.div`
@@ -82,42 +82,31 @@ const Url = styled.a`
 `;
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const {id} =useParams()
 
-  const handleLogin = (e) => {
-    e.preventDefault();
 
-    const newUser = {
-      username: username,
-      password: password,
-    };
-    
-    loginUser(newUser, dispatch, navigate);
-  };
+  useEffect(()=>{
+   
 
+   const newUser = {
+     verify: true,
+     
+   };
+ 
+   editUser(newUser, dispatch, navigate, id,'Bearer 3');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]) 
   return (
     <Container>
       <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form onSubmit={handleLogin}>
-          <Input
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-          <ContainerButton>
-            <Button type="submit">LOGIN</Button>
-          </ContainerButton>
-          <Url href="/register">CREATE A NEW ACCOUNT</Url>
-          <Url>Do you not you remember the password</Url>
-        </Form>
+        <Title>ACCOUNT CONFIRMATION</Title>
+        <h1>Email has been verify</h1>
+        <h1>Now you can login</h1>
+
+            <Button ><a href="/login" >LOGIN</a></Button>
       </Wrapper>
     </Container>
   );

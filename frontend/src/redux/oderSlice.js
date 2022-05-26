@@ -14,7 +14,7 @@ import {createSlice} from "@reduxjs/toolkit"
             success:false,
         },
         full:{
-            detail:null,
+            detail:[],
             isFetching:false,
             error:false,
         },
