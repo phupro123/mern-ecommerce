@@ -6,61 +6,48 @@ import {} from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { direct, editUser, loginUser } from "../../redux/apiRequest";
 import { Link } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    ),
-    url("https://swall.teahub.io/photos/small/16-160847_yamaha-yzf-r1-2020-bike-4k-wallpaper-yzf.jpg");
+  background: #39b449;
   background-size: cover;
-  transform: scaleX(-1);
-  position: absolute;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
+// url(
+//   "https://swall.teahub.io/photos/small/16-160847_yamaha-yzf-r1-2020-bike-4k-wallpaper-yzf.jpg"
+// );
+
 const Wrapper = styled.div`
-  width: 25%;
-  transform: scaleX(-1);
+  width: 40%;
+  height: auto;
   padding: 40px;
   background-color: rgba(216, 234, 243, 0.8);
   border-radius: 16px;
   border: 1px solid transparent;
-  position: relative;
-  top: 180px;
-  right: -150px;
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 30px;
+  font-weight: bold;
   color: #3a7bd5;
 `;
 
-const Form = styled.form`
-  text-align: center;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 16px;
-  border: 1px solid #3a7bd5;
-`;
-
-const ContainerButton = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  margin: 20px 0;
+const Detail = styled.h1`
+  font-size: 20px;
+  margin-top: 20px;
 `;
 
 const Button = styled.button`
   padding: 10px 25px;
   font-size: 15px;
   font-weight: 500;
-  color: #ffffff;
   cursor: pointer;
   border-radius: 10px;
   background-image: linear-gradient(
@@ -71,42 +58,42 @@ const Button = styled.button`
   );
   border: 1px solid transparent;
   text-transform: uppercase;
-`;
-const Url = styled.a`
-  margin: 5px 0px;
-  font-size: 14px;
-  text-decoration: underline;
-  display: block;
-  cursor: pointer;
-  text-decoration: none;
+  margin-top: 20px;
 `;
 
 const Login = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {id} =useParams()
+  const { id } = useParams();
 
+  useEffect(() => {
+    const newUser = {
+      verify: true,
+    };
 
-  useEffect(()=>{
-   
-
-   const newUser = {
-     verify: true,
-     
-   };
- 
-   editUser(newUser, dispatch, navigate, id,'Bearer 3');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]) 
+    editUser(newUser, dispatch, navigate, id, "Bearer 3");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <Container>
       <Wrapper>
+        <FontAwesomeIcon
+          icon={faCircleCheck}
+          style={{
+            width: "100px",
+            height: "100px",
+            marginBottom: "30px",
+            color: "3a7bd5",
+          }}
+        />
         <Title>ACCOUNT CONFIRMATION</Title>
-        <h1>Email has been verify</h1>
-        <h1>Now you can login</h1>
+        <Detail>Email has been verify. Now you can login</Detail>
 
-            <Button ><a href="/login" >LOGIN</a></Button>
+        <Button>
+          <a href="/login" style={{ color: "#ffffff", textDecoration: "none" }}>
+            LOGIN
+          </a>
+        </Button>
       </Wrapper>
     </Container>
   );

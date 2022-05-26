@@ -46,17 +46,6 @@ const Caterogy1 = () => {
         <FilterContainer>
           <Filter>
             <FilterText>Filter Products:</FilterText>
-            <Select>
-              <Option disabled selected>
-                Color
-              </Option>
-              <Option>White</Option>
-              <Option>Black</Option>
-              <Option>Red</Option>
-              <Option>Blue</Option>
-              <Option>Yellow</Option>
-              <Option>Green</Option>
-            </Select>
           </Filter>
           <Filter>
             <FilterText>Sort Products:</FilterText>

@@ -10,30 +10,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { get1, getAllUsers, getOneUser } from "../../../redux/apiRequest";
 
-
-
-
 const Single = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const user = useSelector((state) => state.auth.login?.currentUser)
-  const selectedUser = useSelector((state) => state.user.users?.allUsers)
-  const {userId} = useParams()
- // console.log(userId)
+  const user = useSelector((state) => state.auth.login?.currentUser);
+  const selectedUser = useSelector((state) => state.user.users?.allUsers);
+  const { userId } = useParams();
+  // console.log(userId)
 
   //Load trang
-  useEffect(()=>{
-     if(user.role !=='1'){
-       navigate('/')
-     }
-    if(user?.accessToken){
-      get1(user?.accessToken,dispatch,userId)
-     // getAllUsers(user?.accessToken,dispatch)
+  useEffect(() => {
+    if (user.role !== "1") {
+      navigate("/");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]) 
-
+    if (user?.accessToken) {
+      get1(user?.accessToken, dispatch, userId);
+      // getAllUsers(user?.accessToken,dispatch)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="single">
@@ -45,11 +41,7 @@ const Single = () => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img
-                src={selectedUser.image}
-                alt=""
-                className="itemImg"
-              />
+              <img src={selectedUser.image} alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">{selectedUser.fullname}</h1>
                 <div className="detailItem">
@@ -78,8 +70,8 @@ const Single = () => {
           </div>
         </div>
         <div className="bottom">
-        <h1 className="title">Last Transactions</h1>
-          <List/>
+          <h1 className="title">Last Transactions</h1>
+          <List />
         </div>
       </div>
     </div>

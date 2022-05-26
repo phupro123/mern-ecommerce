@@ -12,7 +12,6 @@ import ListProduct from'./Page/seller/list/ListProduct'
 import Single from'./Page/seller/single/Single'
 import SingleOder from'./Page/seller/single/SingleOder'
 
-
 import NewProduct from'./Page/seller/new/NewProduct'
 
 const Admin = () => {
