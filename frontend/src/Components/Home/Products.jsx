@@ -8,7 +8,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getTop5Product } from "../../redux/apiProduct";
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 20px 150px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -17,7 +17,7 @@ const Container = styled.div`
 
 const ContainerItem = styled.div`
   padding: 20px;
-  width: 20%;
+  width: 25%;
   height: auto;
 `;
 
