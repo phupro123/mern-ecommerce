@@ -1,7 +1,7 @@
 ### `npm start`
 In the project directory backend run: npm start
 
-Backend run in http://localhost:8000
+Backend run in (http://localhost:8000)
 
 In the project directory frontend run: npm start
 
