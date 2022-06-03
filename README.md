@@ -1,5 +1,6 @@
 # Project
-This project is a MERN Stack Project E-commerce selling motorbikes
+This is a MERN Stack Project for E-commerce selling motorbikes. ReactJs for frontend. NodeJs & ExpressJs for backend. MongoDb as a database. 
+
 
 ## Getting Started
 
