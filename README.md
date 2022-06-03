@@ -1,8 +1,10 @@
 ### `npm start`
 In the project directory backend run: npm start
+
 Backend run in http://localhost:8000
 
 In the project directory frontend run: npm start
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
